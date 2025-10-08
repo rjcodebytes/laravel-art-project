@@ -10,10 +10,14 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
-            return redirect()->route('admin.login');
+        $admin = auth('admin')->user();
+
+        if ($admin && $admin->usertype === 'admin') {
+            return $next($request);
         }
 
-        return $next($request);
+        // redirect to the correct admin login route
+        return redirect()->route('admin.login')->withErrors('Access denied. Please login as admin.');
     }
 }
+
