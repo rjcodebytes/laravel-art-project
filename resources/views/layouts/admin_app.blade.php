@@ -20,6 +20,8 @@
     @endif
 
     <script src="https://kit.fontawesome.com/e37f90b971.js" crossorigin="anonymous"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     @stack('styles')
 </head>
 
@@ -30,29 +32,32 @@
               transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50">
         <div class="flex flex-col h-full p-5">
             <div class="flex items-center justify-between mb-8">
-                <h2 class="text-xl font-semibold text-gray-800 tracking-tight">Admin Panel</h2>
+                <a href="{{ route('admin.dashboard') }}">
+                    <h2 class="text-xl font-semibold text-gray-800 tracking-tight">Admin Panel</h2>
+                </a>
+
                 <span class="w-3 h-3 bg-green-500 rounded-full"></span>
             </div>
 
             <nav class="flex-1 space-y-2">
-                <a
+                <a href="{{ route('admin.myart') }}"
                     class="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition">
                     <i class="fa-brands fa-artstation w-5 h-5"></i>
                     <span>My Art</span>
                 </a>
 
-                <a
+                <a href="{{ route('admin.myblog') }}"
                     class="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition">
                     <i class="fa-solid fa-newspaper w-5 h-5"></i>
                     <span>My Blog</span>
                 </a>
             </nav>
 
-            <div class="mt-auto pt-4 border-t border-gray-200">
+            <div class="mt-auto pt-4 border-t border-gray-200 ">
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
                     <button type="submit"
-                        class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition">
+                        class="w-full flex items-center hover:cursor-pointer justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="1.8">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -71,8 +76,7 @@
     <!-- Main Content -->
     <div class="flex-1 lg:ml-64 flex flex-col overflow-hidden">
         <main class="flex-1 p-0 lg:p-8 overflow-y-auto hide-scrollbar">
-            <header
-                class="flex items-center justify-between mb-8 p-4 lg:p-0 bg-transparent">
+            <header class="flex items-center justify-between mb-8 p-4 lg:p-0 bg-transparent">
                 <div class="flex items-center gap-">
                     <!-- Mobile Menu Toggler -->
                     <button id="mobileMenuButton" class="text-gray-700 focus:outline-none lg:hidden">
@@ -88,7 +92,9 @@
                 @yield('content')
             </div>
         </main>
+
     </div>
+
 
     <script>
         const sidebar = document.getElementById('sidebar');
@@ -105,6 +111,24 @@
             overlay.classList.add('hidden');
         });
     </script>
+    <!-- Toast Notification -->
+    @if (session('success') || session('error') || session('info'))
+        <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
+            class="fixed top-5 right-5 z-[9999]">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg text-white
+                        @if(session('success')) bg-green-500
+                        @elseif(session('error')) bg-red-500
+                        @else bg-blue-600 @endif">
+                <i class="fa-solid 
+                        @if(session('success')) fa-circle-check
+                        @elseif(session('error')) fa-circle-xmark
+                        @else fa-circle-info @endif text-xl"></i>
+                <span class="font-medium">
+                    {{ session('success') ?? session('error') ?? session('info') }}
+                </span>
+            </div>
+        </div>
+    @endif
 
 </body>
 

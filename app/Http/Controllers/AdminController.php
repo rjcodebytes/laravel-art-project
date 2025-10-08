@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Painting;
 
 class AdminController extends Controller
 {
@@ -32,9 +33,27 @@ class AdminController extends Controller
         return view('admin.dashboard.page'); // create this blade
     }
 
-    public function logout()
+    public function myArt()
+    {
+        $paintings = Painting::latest()->paginate(10);
+        return view('admin.myart.page', compact('paintings'));
+    }
+
+    public function addNewArt()
+    {
+        return view('admin.myart.add-art.page'); // create this blade
+    }
+
+    public function myBlog()
+    {
+        return view('admin.myblog.page'); // create this blade
+    }
+
+    public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.login')->with('success', 'Logged out successfully.');
     }
 }
