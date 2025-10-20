@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Panel') | {{ config('app.name', 'Laravel Art Project') }}</title>
 
     <!-- Fonts -->
@@ -75,6 +76,7 @@
 
     <!-- Main Content -->
     <div class="flex-1 lg:ml-64 flex flex-col overflow-hidden">
+        <div id="toast-container" class="fixed top-5 right-5 z-[9999] space-y-2"></div>
         <main class="flex-1 p-0 lg:p-8 overflow-y-auto hide-scrollbar">
             <header class="flex items-center justify-between mb-8 p-4 lg:p-0 bg-transparent">
                 <div class="flex items-center gap-">
@@ -95,6 +97,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
     <script>
         const sidebar = document.getElementById('sidebar');
@@ -111,18 +114,51 @@
             overlay.classList.add('hidden');
         });
     </script>
+
+    <script>
+        window.addEventListener("show-toast", (event) => {
+            const { type, message } = event.detail;
+            const toastContainer = document.getElementById("toast-container");
+
+            if (!toastContainer) return;
+
+            const toast = document.createElement("div");
+            toast.className = `
+        flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg text-white
+        ${type === "success" ? "bg-green-500" :
+                    type === "error" ? "bg-red-500" :
+                        "bg-blue-600"}
+    `;
+            toast.innerHTML = `
+        <i class="fa-solid ${type === "success" ? "fa-circle-check" :
+                    type === "error" ? "fa-circle-xmark" :
+                        "fa-circle-info"
+                } text-xl"></i>
+        <span class="font-medium">${message}</span>
+    `;
+
+            toastContainer.appendChild(toast);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        });
+    </script>
+
+
     <!-- Toast Notification -->
     @if (session('success') || session('error') || session('info'))
         <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
             class="fixed top-5 right-5 z-[9999]">
             <div class="flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg text-white
-                        @if(session('success')) bg-green-500
-                        @elseif(session('error')) bg-red-500
-                        @else bg-blue-600 @endif">
+                                @if(session('success')) bg-green-500
+                                @elseif(session('error')) bg-red-500
+                                @else bg-blue-600 @endif">
                 <i class="fa-solid 
-                        @if(session('success')) fa-circle-check
-                        @elseif(session('error')) fa-circle-xmark
-                        @else fa-circle-info @endif text-xl"></i>
+                                @if(session('success')) fa-circle-check
+                                @elseif(session('error')) fa-circle-xmark
+                                @else fa-circle-info @endif text-xl"></i>
                 <span class="font-medium">
                     {{ session('success') ?? session('error') ?? session('info') }}
                 </span>
