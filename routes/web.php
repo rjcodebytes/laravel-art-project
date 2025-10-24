@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PaintingController;
 use App\Http\Controllers\User\PaintingController as UserPaintingController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('home');
@@ -13,9 +14,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// contact page
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('/gallery', function () {
     return view('gallery');
@@ -23,6 +24,9 @@ Route::get('/gallery', function () {
 
 Route::get('/collection', [UserPaintingController::class, 'index'])->name('collection.index');
 Route::get('/collection/{slug}', [UserPaintingController::class, 'show'])->name('collection.show');
+Route::get('/collection/{slug}/enquiry', [UserPaintingController::class, 'enquiry'])->name('enquiry.painting');
+Route::post('/collection/{slug}/enquiry', [UserPaintingController::class, 'sendEnquiry'])->name('enquiry.painting.send');
+
 
 
 

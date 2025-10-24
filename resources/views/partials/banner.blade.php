@@ -13,7 +13,7 @@
         </p>
 
         <a href="{{ url('/contact') }}"
-            class=" inline-block bg-[#d4b28c] hover:bg-[#c19a74] text-[#1a1817] font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-1">
+            class=" inline-block bg-[#d4b28c] hover:bg-[#c19a74] active:bg-[#c19a74] text-[#1a1817] font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-1 active:-translate-y-1">
             Enquire Now
         </a>
     </div>

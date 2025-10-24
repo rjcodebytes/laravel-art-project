@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title', config('app.name', 'Laravel Art Project'))</title>
-	
+
 	<!-- Styles / Scripts (Tailwind via Vite) -->
 	@if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
 		@vite(['resources/css/app.css', 'resources/js/app.js'])
 	@else
 		<style>
 			/* Inline Tailwind fallback omitted for brevity.
-					   If you need the full fallback, paste your compiled CSS here. */
+						   If you need the full fallback, paste your compiled CSS here. */
 		</style>
 	@endif
 
@@ -30,7 +30,7 @@
 	</main>
 
 
-
+	@include('partials.footer')
 	@stack('scripts')
 	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 

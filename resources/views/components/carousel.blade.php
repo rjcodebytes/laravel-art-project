@@ -68,16 +68,16 @@
         class="cta-buttons absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-3 sm:gap-4 z-20 px-4">
 
         <!-- Enquiry Button -->
-        <a href="#" class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium text-[#e8ded4]
+        <a href="{{ route('contact.show') }}" class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium text-[#e8ded4]
            backdrop-blur-md bg-white/30 border border-white/40
-           shadow-md hover:shadow-lg hover:bg-white/40 transition-all duration-300 text-sm sm:text-base">
+           shadow-md hover:shadow-lg active:shadow-lg hover:bg-white/40 active:bg-white/40 transition-all duration-300 text-sm sm:text-base">
             Enquiry
         </a>
 
         <!-- View Collection Button -->
-        <a href="#" class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium text-[#e8ded4]
+        <a href="{{ route('collection.index') }}" class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium text-[#e8ded4]
            backdrop-blur-md bg-[#564b49]/60 border border-white/20
-           shadow-md hover:shadow-lg hover:bg-[#564b49]/80 transition-all duration-300 text-sm sm:text-base">
+           shadow-md hover:shadow-lg active:shadow-lg hover:bg-[#564b49]/80 active:bg-[#564b49]/80 transition-all duration-300 text-sm sm:text-base">
             View Collection
         </a>
 
