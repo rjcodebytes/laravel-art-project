@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-8 md:mb-16 animate-featured-header">
             <h2 class="text-4xl sm:text-5xl font-extrabold font-serif text-[#564b49] mb-4">
-                Featured Artworks
+                Featured Artworks RJ
             </h2>
             <p class="text-lg text-gray-600">
                 Discover our collection of curated portrait and landscape paintings.
