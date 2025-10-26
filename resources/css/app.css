@@ -28,3 +28,7 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.painting {
+  will-change: transform, opacity;
+}

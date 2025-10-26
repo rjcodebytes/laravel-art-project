@@ -30,6 +30,7 @@
             scrollTrigger: {
                 trigger: "section[style*='artist-banner']",
                 start: "top 80%",
+                toggleActions: "play none none reset"
             },
         });
 
@@ -42,6 +43,7 @@
             scrollTrigger: {
                 trigger: "section[style*='artist-banner']",
                 start: "top 80%",
+                toggleActions: "play none none reset"
             },
         });
 
@@ -54,6 +56,7 @@
             scrollTrigger: {
                 trigger: "section[style*='artist-banner']",
                 start: "top 80%",
+                toggleActions: "play none none reset"
             },
         });
     });

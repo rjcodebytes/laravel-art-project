@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PaintingController;
 use App\Http\Controllers\User\PaintingController as UserPaintingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BlogController;
 
 Route::get('/', function () {
     return view('home');
@@ -21,6 +22,9 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/gallery', function () {
     return view('gallery');
 });
+
+
+Route::get('/my-blogs', [BlogController::class, 'index'])->name('myblogs.index');
 
 Route::get('/collection', [UserPaintingController::class, 'index'])->name('collection.index');
 Route::get('/collection/{slug}', [UserPaintingController::class, 'show'])->name('collection.show');

@@ -1,16 +1,30 @@
-<footer class="bg-[#302f2e] text-gray-300 py-10">
+<footer class="bg-[#1c1311] text-gray-300 py-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        <!-- Logo + Description -->
-        <div>
+        <!-- Logo + Social Links -->
+        <div >
             <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-20 mb-4">
-            <p class="text-sm leading-relaxed">
-                Contemporary artist exploring the intersection of traditional techniques 
-                and modern expression through oil, acrylic, and digital mediums.
-            </p>
+
+            <div class="flex items-center gap-4 mt-4">
+                <a href="#" class="text-gray-300 hover:text-[#d4b28c] transition">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-[#d4b28c] transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-[#d4b28c] transition">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="mailto:yashwantgarud77@gmail.com" class="text-gray-300 hover:text-[#d4b28c] transition">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="tel:+919284242035" class="text-gray-300 hover:text-[#d4b28c] transition">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
         </div>
 
-        <!-- Quick Links + Support (side by side on mobile) -->
+        <!-- Quick Links + Support -->
         <div class="col-span-2">
             <div class="grid grid-cols-2 gap-6 sm:gap-10">
                 <!-- Quick Links -->
@@ -19,7 +33,7 @@
                     <ul class="space-y-2">
                         <li><a href="/collection" class="hover:text-[#d4b28c] transition">Collection</a></li>
                         <li><a href="/about" class="hover:text-[#d4b28c] transition">About</a></li>
-                        <li><a href="/news" class="hover:text-[#d4b28c] transition">My Blogs</a></li>
+                        <li><a href="/my-blogs" class="hover:text-[#d4b28c] transition">My Blogs</a></li>
                     </ul>
                 </div>
 
@@ -35,23 +49,27 @@
             </div>
         </div>
 
-        <!-- Contact Info -->
+        <!-- Subscribe Section -->
         <div>
-            <h3 class="text-white font-semibold mb-4">Get in Touch</h3>
-            <ul class="space-y-3">
-                <li class="flex items-center gap-3">
-                    <i class="fa-solid fa-envelope text-[#d4b28c]"></i>
-                    <a href="mailto:yashwantgarud77@gmail.com" class="hover:text-[#d4b28c] transition">yashwantgarud77@gmail.com</a>
-                </li>
-                <li class="flex items-center gap-3">
-                    <i class="fa-solid fa-phone text-[#d4b28c]"></i>
-                    <a href="tel:+919284242035" class="hover:text-[#d4b28c] transition">+91 9284242035</a>
-                </li>
-                <li class="flex items-center gap-3">
-                    <i class="fa-brands fa-instagram text-[#d4b28c]"></i>
-                    <a href="#" class="hover:text-[#d4b28c] transition">@elenamartinezart</a>
-                </li>
-            </ul>
+            <h3 class="text-white font-semibold mb-4">Subscribe for Updates</h3>
+            <p class="text-sm leading-relaxed mb-4">
+                Get the latest news and updates straight to your inbox.
+            </p>
+            <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3">
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Enter your email" 
+                    required
+                    class="px-4 py-2 rounded-md border-2 border-[#c29e7f] flex-1 focus:outline-none"
+                >
+                <button 
+                    type="submit" 
+                    class="bg-[#d4b28c] text-[#1c1311] px-4 py-2 cursor-pointer rounded-md font-semibold hover:bg-[#c29e7f] transition"
+                >
+                    Subscribe
+                </button>
+            </form>
         </div>
 
     </div>
@@ -60,6 +78,3 @@
         © {{ date('Y') }} Yashwant Garud. All rights reserved.
     </div>
 </footer>
-
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/a2e0a0f6f0.js" crossorigin="anonymous"></script>
