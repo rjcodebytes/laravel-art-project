@@ -4,7 +4,7 @@
     "name": "ScrollTrigger"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DywfbWYj.css",
+    "file": "assets/app-B8NL33RI.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -43,5 +43,11 @@
     "imports": [
       "_ScrollTrigger-lnFyu4_T.js"
     ]
+  },
+  "resources/js/structured-data.js": {
+    "file": "assets/structured-data-BEf_sZP1.js",
+    "name": "structured-data",
+    "src": "resources/js/structured-data.js",
+    "isEntry": true
   }
 }
