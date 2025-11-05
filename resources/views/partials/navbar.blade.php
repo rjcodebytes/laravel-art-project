@@ -2,22 +2,22 @@
     {{ request()->is('/')
 	? 'bg-transparent'
 	: 'bg-[#1c1311] backdrop-blur-md shadow-md' }}">
-	<div class="max-w-7xl mx-auto px-6 py-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+	<div class="max-w-7xl mx-auto px-6 py-6 sm:px-6 sm:py-6 lg:px-8 lg:py-5">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
 			<div class="flex items-center">
 				<a href="{{ url('/') }}" class="flex items-center space-x-3">
-					<img src="{{ asset('logo.webp') }}" alt="Logo" class="h-24 sm:h-20 md:h-30 w-auto object-contain">
+					<img src="{{ asset('logo.webp') }}" alt="Logo" class="h-24 sm:h-20 md:h-25 w-auto object-contain">
 				</a>
 			</div>
 
 			<!-- Desktop links -->
 			<div class="hidden md:flex md:items-center md:space-x-8">
 				<a href="{{ url('/collection') }}"
-					class="text-2xl font-medium text-[#e8ded4] hover:text-white transition">Collection</a>
+					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">Collection</a>
 				<a href="{{ url('/about') }}"
-					class="text-2xl font-medium text-[#e8ded4] hover:text-white transition">About</a>
-				<a href="{{ url('/my-blogs') }}" class="text-2xl font-medium text-[#e8ded4] hover:text-white transition">My
+					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">About</a>
+				<a href="{{ url('/my-blogs') }}" class="text-xl font-medium text-[#e8ded4] hover:text-white transition">My
 					Blogs</a>
 			</div>
 

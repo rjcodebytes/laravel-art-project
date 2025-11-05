@@ -35,7 +35,11 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
-	<link rel="manifest" href="{{ asset('site.webmanifest') }}">
+	<link rel="manifest" href="{{ asset('manifest.json') }}">
+
+	<!-- AOS CSS -->
+	<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 
 	<!-- Tailwind via Vite -->
 	@if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -48,7 +52,7 @@
 	<script src="https://kit.fontawesome.com/e37f90b971.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="min-h-screen flex flex-col bg-[#faf8f5] text-gray-900">
+<body class="min-h-screen flex flex-col bg-[#e8ded3] text-gray-900">
 	{{-- Navbar --}}
 	@includeIf('partials.navbar')
 
@@ -62,6 +66,21 @@
 
 	{{-- Scripts --}}
 	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+	<!-- Swiper JS -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<!-- AOS JS -->
+	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+	<script>
+		AOS.init({
+			duration: 1000,  // Animation duration in ms
+			delay: 500 // Animate only once per element
+		});
+	</script>
+
 	@stack('scripts')
 </body>
 

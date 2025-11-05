@@ -32,3 +32,8 @@ body {
 .painting {
   will-change: transform, opacity;
 }
+
+#artGrid img {
+  break-inside: avoid;
+ 
+}

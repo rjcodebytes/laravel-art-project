@@ -1,12 +1,9 @@
-<section id="gallery" class="relative pt-10 pb-10 bg-[#faf8f5] overflow-hidden">
+<section id="gallery" class="relative pt-10 pb-10 md:pb-0 bg-[#e8ded3] overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-2 md:mb-10 animate-featured-header">
-            <h2 class="text-4xl sm:text-5xl font-extrabold font-serif text-[#564b49] mb-4">
+        <div class="text-center animate-featured-header">
+            <h2 class="text-4xl sm:text-5xl font-extrabold font-serif text-[#564b49] ">
                 Featured Artworks
             </h2>
-            <p class="text-lg text-gray-600">
-                Discover our collection of curated portrait and landscape paintings.
-            </p>
         </div>
 
         <!-- Custom Grid Layout -->
@@ -34,7 +31,7 @@
         </div>
 
         <!-- View More Button -->
-        <div class="text-center relative -bottom-5 lg:bottom-20 animate-featured-header-button">
+        <div class="text-center relative -bottom-5 md:bottom-15 animate-featured-header-button">
             <a href="/collection"
                 class="group inline-flex items-center justify-center bg-[#d4b28c] hover:bg-[#c19a74] active:bg-[#c19a74] text-[#1a1817] font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 active:-translate-y-1">
 
@@ -45,8 +42,6 @@
                 </i>
             </a>
         </div>
-
-
     </div>
 </section>
 

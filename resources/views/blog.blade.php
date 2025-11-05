@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <section id="blog-header" class="relative mt-36 md:mt-40 mb-8 bg-[#faf8f5] overflow-hidden">
+    <section id="blog-header" class="relative mt-36 md:mt-40 mb-8  overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-2 md:mb-10 animate-blog-header">
                 <h2 class="text-4xl sm:text-5xl font-extrabold font-serif text-[#564b49] mb-4">

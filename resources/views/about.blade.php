@@ -1,131 +1,199 @@
 @extends('layouts.app')
-@section('title', 'About')
+@section('title', 'About Yashwant Garud - Indian Artist Inspired by Ajanta Caves')
+@section('meta_description', 'Learn about Yashwant Garud, a professional artist from Shendurni, whose works revive the spirit of Ajanta through devotion, research, and contemporary expression.')
+@section('meta_keywords', 'about artist, Yashwant Garud biography, Ajanta cave art, Indian painter, traditional art, heritage preservation, fine artist')
+
 @section('content')
     <style>
-        /* Gradient background and splash hover effect */
+        /* 🌆 Dark brown gradient background with cream-brown splash */
         .about-gradient-bg {
-            background: linear-gradient(135deg, #e8ded3 0%, #f5e9d7 50%, #d4b28c 100%);
             position: relative;
             overflow: hidden;
+            color: #f3e9dd;
+            background: linear-gradient(135deg, #3c2f2f 0%, #4b3621 50%, #2d1f16 100%);
         }
 
+        /* Splash highlight overlay */
         .about-gradient-bg::before {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 0;
+            z-index: 2;
+            /* 👈 ensures it appears above background, but under text */
             pointer-events: none;
-            transition: opacity 0.5s, transform 0.7s;
+            transition: opacity 0.45s ease, transform 0.7s cubic-bezier(.2, .9, .2, 1);
             opacity: 0;
-            background: radial-gradient(circle at var(--splash-x, 50%) var(--splash-y, 50%), rgba(212,178,140,0.35) 0, transparent 60%);
+            transform: scale(0.95);
+            background: radial-gradient(circle at var(--splash-pos, 50% 50%),
+                    rgba(255, 230, 200, 0.35) 0%,
+                    rgba(230, 200, 170, 0.10) 25%,
+                    rgba(0, 0, 0, 0) 60%);
+            mix-blend-mode: overlay;
         }
 
         .about-gradient-bg.splash-active::before {
             opacity: 1;
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
-        /* Expertise box enhancements */
-        .expertise-box {
+        /* Content wrapper above splash */
+        .about-gradient-bg>* {
             position: relative;
-            background: linear-gradient(120deg, #fff 80%, #f5e9d7 100%);
+            z-index: 5;
+        }
+
+
+        /* Image shadow enhancement */
+        .left-image img {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
             border-radius: 1rem;
-            box-shadow: 0 4px 24px 0 rgba(212,178,140,0.08), 0 1.5px 8px 0 rgba(87,76,74,0.08);
-            transition: transform 0.22s cubic-bezier(.4,.2,.2,1), box-shadow 0.22s;
-            border: 1px solid #f3e5d8;
-            overflow: hidden;
+            transition: transform 0.6s ease;
         }
-        .expertise-box:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 8px 32px 0 rgba(212,178,140,0.18), 0 2px 12px 0 rgba(87,76,74,0.12);
-            border-color: #d4b28c;
+
+        /* Paragraph styling */
+        .about-text {
+            color: #f5e9d7;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            letter-spacing: 0.2px;
         }
-        .expertise-box .icon {
-            position: absolute;
-            top: -18px;
-            right: -18px;
-            font-size: 2.5rem;
-            opacity: 0.12;
-            pointer-events: none;
+
+        /* Accent line under name */
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background-color: #d4b28c;
+            margin-top: 0.5rem;
+            border-radius: 2px;
         }
     </style>
-    <section id="aboutSection"
-        class="about-gradient-bg p-8 mt-28 md:mt-32 min-h-[60vh] md:min-h-[80vh]">
-        <div class="container mx-auto flex flex-col lg:flex-row gap-8 items-stretch">
+
+    <section id="aboutSection" class="about-gradient-bg p-8 mt-28 md:mt-26 min-h-[70vh] md:min-h-[85vh] flex items-center">
+        <div class="container mx-auto flex flex-col lg:flex-row gap-10 items-center relative z-10">
             <!-- Left Image -->
-            <div class="flex-1 rounded-xl overflow-hidden shadow-xl left-image h-screen ">
+            <div class="flex-1 left-image md:relative md:bottom-20">
                 <img src="{{ asset('images/yashwant-bg.webp') }}" alt="Yashwant Garud"
-                    class="w-full h-full min-h-[320px] lg:min-h-full object-cover">
+                    class="w-full h-auto rounded-xl object-cover">
             </div>
 
             <!-- Right Info -->
-            <div class="flex-1 flex flex-col justify-center items-center gap-6">
-                <!-- Header -->
-                <div>
-                    <p class="text-3xl text-[#574c4a] font-bold font-serif tracking-wide mb-1 intro-pre">Hey,</p>
-                    <h1 class="text-4xl sm:text-5xl  font-bold text-[#574c4a] mb-4 font-serif intro-heading">I am Yashwant
-                        Garud</h1>
-                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        A professional artist from Shendurni, near the world-famous Ajanta
-                        Caves in Maharashtra.
-                        My work is inspired by Ajanta-style paintings, blending traditional craftsmanship with contemporary
-                        presentation.
-                        Trained at Khiroda School of Art and Abhinav Kala Mahavidyalaya, Pune, I specialize in recreating
-                        and preserving the intricate storytelling and vibrant colors of Ajanta through modern mediums,
-                        reflecting a deep respect for India’s cultural heritage.
-                    </p>
-                </div>
-                <!-- Expertise Boxes -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
-                    <div class="expertise-box bg-white rounded-lg p-6 flex flex-col gap-2 hover:shadow-lg transition">
-                        <span class="icon"><i class="fa-solid fa-palette"></i></span>
-                        <p class="font-semibold text-[#574c4a] text-lg">Ajanta-Style Painting</p>
-                        <p class="text-gray-600 text-sm">Specializes in recreating and preserving the intricate storytelling
-                            and colors of Ajanta paintings.</p>
-                    </div>
-                    <div class="expertise-box bg-white rounded-lg p-6 flex flex-col gap-2 hover:shadow-lg transition">
-                        <span class="icon"><i class="fa-solid fa-brush"></i></span>
-                        <p class="font-semibold text-[#574c4a] text-lg">Contemporary Adaptation</p>
-                        <p class="text-gray-600 text-sm">Blends traditional craftsmanship with modern techniques and
-                            presentation.</p>
-                    </div>
-                    <div class="expertise-box bg-white rounded-lg p-6 flex flex-col gap-2 hover:shadow-lg transition">
-                        <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <p class="font-semibold text-[#574c4a] text-lg">Art Education & Training</p>
-                        <p class="text-gray-600 text-sm">Trained at Khiroda School of Art and Abhinav Kala Mahavidyalaya,
-                            Pune.</p>
-                    </div>
-                    <div class="expertise-box bg-white rounded-lg p-6 flex flex-col gap-2 hover:shadow-lg transition">
-                        <span class="icon"><i class="fa-solid fa-landmark"></i></span>
-                        <p class="font-semibold text-[#574c4a] text-lg">Cultural Heritage Preservation</p>
-                        <p class="text-gray-600 text-sm">Works with devotion to keep India’s artistic heritage alive through
-                            paintings and modern mediums.</p>
-                    </div>
-                </div>
+            <div class="flex-1 flex flex-col justify-center gap-4 about-text">
+                <p class="text-4xl text-[#f3e9dd] font-bold font-serif ">Hey,</p>
+                <h1 class="text-4xl sm:text-5xl font-bold text-[#f3e9dd] mb-2 font-serif intro-heading">
+                    I am Yashwant Garud
+                </h1>
+                <div class="accent-line"></div>
 
+                <p class="mt-6">
+                    I am a professional artist from Shendurni, a town located near the world-famous Ajanta Caves in
+                    Maharashtra.
+                    Growing up close to this heritage site has had a lasting influence on my artistic perspective and
+                    thematic choices.
+                </p>
+                <p>
+                    I pursued my formal art education at the Khiroda School of Art, completing the Foundation Course in Fine
+                    Arts,
+                    followed by an Art Teacher’s Diploma (A.T.D.) and a G.D. Art (Commercial) degree from Abhinav Kala
+                    Mahavidyalaya, Pune.
+                    These academic foundations provided a strong base in technique, composition, and applied art principles.
+                </p>
+                <p>
+                    Living close to Ajanta naturally drew me to the timeless beauty of its cave paintings. Their colors,
+                    emotions,
+                    and intricate storytelling continue to inspire my work. Over the years, I have focused extensively on
+                    researching,
+                    studying, and recreating Ajanta-style paintings, blending traditional craftsmanship with contemporary
+                    presentation.
+                    My work reflects a deep respect for India’s cultural heritage and aims to preserve the artistic
+                    excellence of
+                    the Ajanta paintings through modern mediums.
+                </p>
+                <p>
+                    My journey as an artist is guided by patience, devotion, and a constant dialogue between heritage and
+                    modernity.
+                    Every painting I create is a humble attempt to keep that dialogue alive, to let the art of the past
+                    continue
+                    to breathe through the present.
+                </p>
             </div>
         </div>
+    </section>
+    
+
+    <section id="exhibitions" class=" text-white py-16 md:py-10 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 md:px-10">
+            <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#574c4a] mb-8">
+                Exhibitions & Media Coverage
+            </h2>
+
+            <!-- Collage Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 auto-rows-[600px] md:auto-rows-[558px]">
+                <!-- LEFT SIDE (3 stacked images) -->
+                <div class="grid grid-rows-3 gap-4 md:gap-6">
+                    <div class="overflow-hidden rounded-xl group">
+                        <img src="{{ asset('images/exhibitions/ex1.jpg') }}" alt="Exhibition 1"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
+                    </div>
+
+                    <div class="overflow-hidden rounded-xl group">
+                        <img src="{{ asset('images/exhibitions/ex2.jpg') }}" alt="Exhibition 2"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
+                    </div>
+
+                    <div class="overflow-hidden rounded-xl group">
+                        <img src="{{ asset('images/exhibitions/ex3.jpg') }}" alt="Exhibition 3"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE (2 newspaper + 1 video) -->
+                <div class="grid grid-rows-3 gap-4 md:gap-6">
+                    <div class="grid grid-cols-2 gap-4 md:gap-6 row-span-1">
+                        <div class="overflow-hidden rounded-xl group">
+                            <img src="{{ asset('images/exhibitions/ex4.jpg') }}" alt="News 1"
+                                class="w-full h-full transform group-hover:scale-110 transition duration-700 ease-out" />
+                        </div>
+                        <div class="overflow-hidden rounded-xl group">
+                            <img src="{{ asset('images/exhibitions/ex5.jpg') }}" alt="News 2"
+                                class="w-full h-full transform group-hover:scale-110 transition duration-700 ease-out" />
+                        </div>
+                    </div>
+
+                    <div class="row-span-2 overflow-hidden rounded-xl relative bg-[#2e2a28] group">
+                        <iframe class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/KJNWuVwRPS8?autoplay=0&mute=1&rel=0" title="Exhibition Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
     @vite(['resources/js/about-animations.js'])
 
-    <section class="relative bg-center py-10 m-5 md:m-10 rounded-3xl text-white" style="background-image: url('/images/artist-banner2.png');">
-        <div class="absolute inset-0 bg-black/20 rounded-3xl"></div>
-
+    <!-- Quote Section -->
+    <section class="relative m-5 md:m-10 rounded-3xl -bg-[position:center_70%] bg-cover bg-no-repeat py-12 text-white"
+        style="background-image: url('/images/artist-banner3.png');">
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-4xl sm:text-5xl font-extrabold font-serif mb-6 tracking-wide">
-                “Every brushstroke tells a story, and every color speaks a feeling.”
+                The Walls of Ajanta Whisper Stories
             </h2>
             <p class="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed">
-                As a professional artist, I aim to bring emotions to life through art.
-                Whether you’re looking for custom portrait commissions or large-scale
-                wall paintings, I’d love to collaborate and create something meaningful with you.
+                My art draws life from the Ajanta Caves — a world of timeless colors, emotions,
+                and divine stories. From recreating ancient murals to crafting custom artworks
+                that echo India’s cultural essence — every painting tells a story waiting to live
+                on your walls.
             </p>
 
             <a href="{{ url('/contact') }}"
-                class=" inline-block bg-[#d4b28c] hover:bg-[#c19a74] text-[#1a1817] font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-1">
-                Enquire Now
+                class="group inline-flex items-center justify-center bg-[#d4b28c] hover:bg-[#c19a74] active:bg-[#c19a74] text-[#1a1817] font-semibold text-sm md:text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-1 active:-translate-y-1">
+
+                <span class="transition-transform duration-300">Acquire Ajanta’s Enduring Artistry</span>
+
+                <i
+                    class="fa-solid fa-arrow-right fa-sm ml-2 transform -translate-x-0 -rotate-45 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-0 group-active:translate-x-1 group-active:rotate-0">
+                </i>
             </a>
         </div>
     </section>
@@ -133,6 +201,7 @@
     <!-- GSAP Animation -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Quote section animations
             gsap.from("section[style*='artist-banner'] h2", {
                 opacity: 0,
                 y: 40,
@@ -167,25 +236,34 @@
                     start: "top 80%",
                 },
             });
+
+            // Splash hover effect: set combined --splash-pos and throttle updates with rAF
+            const aboutBg = document.getElementById('aboutSection');
+            if (aboutBg) {
+                let raf = null;
+                function onMove(e) {
+                    if (raf) cancelAnimationFrame(raf);
+                    raf = requestAnimationFrame(() => {
+                        const rect = aboutBg.getBoundingClientRect();
+                        const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+                        const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
+                        aboutBg.style.setProperty('--splash-pos', `${x}% ${y}%`);
+                        raf = null;
+                    });
+                }
+
+                aboutBg.addEventListener('mousemove', onMove, { passive: true });
+                aboutBg.addEventListener('mouseenter', (e) => {
+                    // position immediately on enter
+                    onMove(e);
+                    aboutBg.classList.add('splash-active');
+                }, { passive: true });
+                aboutBg.addEventListener('mouseleave', () => {
+                    aboutBg.classList.remove('splash-active');
+                    // optional: cleanup position
+                    aboutBg.style.setProperty('--splash-pos', `50% 50%`);
+                }, { passive: true });
+            }
         });
-
-        // Splash hover effect for gradient background
-        const aboutBg = document.getElementById('aboutSection');
-        if (aboutBg) {
-            aboutBg.addEventListener('mousemove', e => {
-                const rect = aboutBg.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                aboutBg.style.setProperty('--splash-x', `${x}%`);
-                aboutBg.style.setProperty('--splash-y', `${y}%`);
-            });
-            aboutBg.addEventListener('mouseenter', () => {
-                aboutBg.classList.add('splash-active');
-            });
-            aboutBg.addEventListener('mouseleave', () => {
-                aboutBg.classList.remove('splash-active');
-            });
-        }
     </script>
-
 @endsection

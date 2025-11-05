@@ -36,7 +36,7 @@
         }
     </style>
 
-    <section class="md:p-10 mt-24 md:mt-32 bg-gray-50 min-h-screen overflow-hidden">
+    <section class="md:p-10 mt-24 md:mt-26  min-h-screen overflow-hidden">
         <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden fade-container">
             <div class="grid md:grid-cols-2 gap-8 p-8">
 

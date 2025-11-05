@@ -1,5 +1,19 @@
 @extends('layouts.app')
-@section('title', $painting->title)
+{{-- 🧠 Dynamic SEO for Painting Detail Page --}}
+@section('title', $painting->title . ' - Yashwant Garud')
+@section('meta_description', Str::limit(strip_tags($painting->description ?? 'Explore this unique Ajanta-inspired painting by Yashwant Garud.'), 160))
+@section('meta_keywords', $painting->tags ?? 'Ajanta art, Indian painting, Yashwant Garud, fine art, cultural art, original paintings')
+
+{{-- 🔗 Open Graph / Social Media Tags --}}
+@section('og_title', $painting->title . ' - Yashwant Garud')
+@section('og_description', Str::limit(strip_tags($painting->description ?? 'Explore this unique Ajanta-inspired painting by Yashwant Garud.'), 160))
+@section('og_type', 'article')
+@section('og_image', isset($painting->images[0]) ? asset('storage/' . $painting->images[0]) : asset('logo.webp'))
+
+{{-- 🐦 Twitter Card --}}
+@section('twitter_title', $painting->title . ' - Yashwant Garud')
+@section('twitter_description', Str::limit(strip_tags($painting->description ?? 'Explore this unique Ajanta-inspired painting by Yashwant Garud.'), 160))
+@section('twitter_image', isset($painting->images[0]) ? asset('storage/' . $painting->images[0]) : asset('logo.webp'))
 
 @section('content')
     <style>
@@ -34,12 +48,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <section class=" md:p-10 mt-24 md:mt-32 bg-gray-50 min-h-screen overflow-hidden">
-        <div class="max-w-7xl mx-auto overflow-hidden painting-container opacity-0 translate-y-10">
-            <div class="grid md:grid-cols-2 gap-8 items-start">
-
+    <section class="md:p-10 mt-28 md:mt-26 overflow-hidden">
+        <div class="max-w-7xl mx-auto painting-container opacity-0 translate-y-10">
+            <div class="grid md:grid-cols-2 gap-0 md:gap-8 items-start">
                 {{-- LEFT: IMAGE CAROUSEL --}}
-                <div class="p-6">
+                <div class="p-6 md:p-0">
                     <div class="relative rounded-lg overflow-hidden border border-gray-200">
                         <div id="carousel" class="relative w-full h-[500px] overflow-hidden bg-gray-100">
                             @foreach ($painting->images as $index => $img)
@@ -50,11 +63,12 @@
 
                         {{-- Carousel Controls --}}
                         <button id="prevBtn"
-                            class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-gray-100 shadow-md transition duration-300">
+                            class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 shadow-md transition duration-300">
                             &#10094;
                         </button>
+
                         <button id="nextBtn"
-                            class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-gray-100 shadow-md transition duration-300">
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 shadow-md transition duration-300">
                             &#10095;
                         </button>
                     </div>
@@ -70,55 +84,52 @@
                 </div>
 
                 {{-- RIGHT: DETAILS --}}
-                <div class="p-6 md:p-8">
+                <div class="p-6 md:p-8 bg-gray-50 md:rounded-lg self-start h-auto">
+                    {{-- Title --}}
                     <h1 class="text-3xl font-bold text-[#2f2f2f] mb-2 fade-up">{{ $painting->title }}</h1>
-                    <p class="text-gray-600 mb-2 fade-up delay-1">{{ $painting->description }}</p>
 
-                    <p class="text-gray-500 mb-3 text-sm fade-up delay-2">
-                        {{ ucfirst($painting->category ?? 'Painting') }} |
-                        {{ $painting->medium ?? 'Oil on Canvas' }}
-                    </p>
+                    {{-- Description --}}
+                    <p class="text-gray-600 mb-3 fade-up delay-1 text-justify">{{ $painting->description }}</p>
+
+                    {{-- Painting Details Inline --}}
+                    <div class="text-gray-500 text-sm mb-4 fade-up delay-2">
+                        <span class="mr-2"><strong>Category:</strong>
+                            {{ ucfirst($painting->category ?? 'Painting') }}</span> |
+                        <span class="mx-2"><strong>Medium:</strong> {{ $painting->medium ?? 'Acrylic on Canvas' }}</span> |
+                        <span class="mx-2"><strong>Size:</strong> {{ $painting->dimensions ?? '24 x 36 in' }}</span> 
+                        {{-- <span class="ml-2"><strong>Year:</strong> {{ $painting->year_created ?? '-' }}</span> --}}
+                    </div>
 
                     {{-- Price --}}
                     @if($painting->price)
                         <p class="text-2xl font-semibold text-amber-600 mb-1 fade-up delay-3">
                             ₹ {{ number_format($painting->price) }}
                         </p>
-                        <p class="text-xs text-gray-500 mb-4 fade-up delay-4">(Inclusive of GST)</p>
+                        <p class="text-xs text-gray-500 mb-6 fade-up delay-4">(Inclusive of GST)</p>
                     @endif
 
-                    {{-- Buttons --}}
-                    <div class="flex flex-col sm:flex-row gap-3 mb-8 fade-up delay-5">
+                    {{-- Tags --}}
+                    @if($painting->tags)
+                        <div class="mb-6 fade-up delay-5">
+                            <span class="inline-block bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs">
+                                Tags: {{ $painting->tags }}
+                            </span>
+                        </div>
+                    @endif
+
+                    {{-- Contact Button --}}
+                    <div class="mt-8 fade-up delay-6 flex justify-center">
                         <a href="{{ route('enquiry.painting', $painting->slug) }}"
-                            class="contact-btn flex-1 inline-block text-[#1a1817] text-center px-6 py-3 rounded-md font-medium shadow-md transition-all duration-500 relative overflow-hidden">
+                            class="contact-btn inline-block text-[#1a1817] text-center px-6 py-3 rounded-md font-medium shadow-md transition-all duration-500 relative overflow-hidden">
                             <span class="relative z-10">Contact Me for Purchase</span>
                         </a>
                     </div>
 
-
-                    {{-- Details of Work --}}
-                    <div class="fade-up delay-6">
-                        <h3 class="text-lg font-semibold mb-3 border-b border-gray-200 pb-2">Details of the Work</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li><strong>Size:</strong> {{ $painting->dimensions ?? '24 x 36 in' }}</li>
-                            <li><strong>Category:</strong> {{ $painting->category ?? 'Painting' }}</li>
-                            <li><strong>Medium:</strong> {{ $painting->medium ?? 'Acrylic on Canvas' }}</li>
-                            <li><strong>Year:</strong> {{ $painting->year_created ?? '-' }}</li>
-                        </ul>
-
-                        {{-- Tag --}}
-                        @if($painting->tags)
-                            <div class="mt-5">
-                                <span class="inline-block bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs">
-                                    Tags: {{ $painting->tags }}
-                                </span>
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     {{-- Carousel + GSAP Script --}}
     <script>

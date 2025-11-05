@@ -15,6 +15,14 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/terms-and-conditions', function () {
+    return view('term');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('privacy');
+});
+
 // contact page
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
