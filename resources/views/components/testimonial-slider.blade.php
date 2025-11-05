@@ -30,7 +30,7 @@
                  'name' => "Eknath Deshmukh", 
                  'title' => "Senior Poet & Writer, Jalgaon"]
             ] as $t)
-                <div class="testimonial-slide absolute w-[85%] sm:w-[70%] bg-white shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 text-center transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] mx-4 sm:mx-6">
+                <div class="testimonial-slide absolute w-[85%] lg:w-[75%] bg-white shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 text-center transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] mx-4 sm:mx-6">
                     <div class="text-[60px] sm:text-[70px] lg:text-[80px] text-[#b89b75] leading-none opacity-70 mb-3">
                         <i class="fa-solid fa-quote-left"></i>
                     </div>
