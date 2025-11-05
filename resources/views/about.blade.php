@@ -118,7 +118,7 @@
             </div>
         </div>
     </section>
-
+    
 
     <section id="exhibitions" class=" text-white py-16 md:py-10 overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 md:px-10">
@@ -159,15 +159,13 @@
                         </div>
                     </div>
 
-                    <div class="row-span-2 overflow-hidden rounded-xl relative bg-[#2e2a28] aspect-video">
-                        <iframe class="absolute inset-0 w-full h-full rounded-xl"
-                            src="https://www.youtube.com/embed/KJNWuVwRPS8?autoplay=0&mute=1&rel=0&playsinline=1"
-                            title="Exhibition Video" frameborder="0" loading="lazy"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
-                        </iframe>
+                    <div class="row-span-2 overflow-hidden rounded-xl relative bg-[#2e2a28] group">
+                        <iframe class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/KJNWuVwRPS8?autoplay=0&mute=1&rel=0" title="Exhibition Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
                     </div>
-
                 </div>
             </div>
         </div>
