@@ -77,7 +77,7 @@
 	<script>
 		AOS.init({
 			duration: 1000,  // Animation duration in ms
-			delay: 500 // Animate only once per element
+ // Animate only once per element
 		});
 	</script>
 

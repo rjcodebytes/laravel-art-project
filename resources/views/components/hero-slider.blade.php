@@ -34,9 +34,9 @@
             '/images/i3.webp'
         ];
         const mobileSlides = [
-            '/images/mi1.webp',
-            '/images/mi2.webp',
-            '/images/mi3.webp'
+            '/images/mi1.jpg',
+            '/images/mi2.jpg',
+            '/images/mi3.jpg'
         ];
 
         let currentSet = [];
