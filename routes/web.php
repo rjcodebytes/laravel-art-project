@@ -5,7 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PaintingController;
 use App\Http\Controllers\User\PaintingController as UserPaintingController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserBlogController;
+use App\Http\Controllers\Admin\BlogController;
 
 Route::get('/', function () {
     return view('home');
@@ -32,7 +33,9 @@ Route::get('/gallery', function () {
 });
 
 
-Route::get('/my-blogs', [BlogController::class, 'index'])->name('myblogs.index');
+Route::get('/blogs', [UserBlogController::class, 'index'])->name('myblogs.index');
+Route::get('/blogs/{slug}', [UserBlogController::class, 'show'])->name('blog.show');
+
 
 Route::get('/collection', [UserPaintingController::class, 'index'])->name('collection.index');
 Route::get('/collection/{slug}', [UserPaintingController::class, 'show'])->name('collection.show');
@@ -58,7 +61,14 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/myart/update/{id}', [PaintingController::class, 'update'])->name('admin.myart.update');
     Route::post('/admin/myart/delete-image/{id}', [PaintingController::class, 'deleteImage'])->name('admin.myart.delete-image');
 
+    Route::get('/admin/myblog', [BlogController::class, 'index'])->name('admin.myblog');
+    Route::get('/admin/myblog/create', [BlogController::class, 'create'])->name('admin.myblog.create');
+    Route::post('/admin/myblog/store', [BlogController::class, 'store'])->name('admin.myblog.store');
+    Route::get('/admin/myblog/edit/{blog}', [BlogController::class, 'edit'])->name('admin.myblog.edit');
+    Route::put('/admin/myblog/update/{blog}', [BlogController::class, 'update'])->name('admin.myblog.update');
+    Route::delete('/admin/myblog/destroy/{blog}', [BlogController::class, 'destroy'])->name('admin.myblog.destroy');
 
-    Route::get('/admin/myblog', [AdminController::class, 'myBlog'])->name('admin.myblog');
+    Route::patch('/admin/blogs/{id}/toggle-featured', [BlogController::class, 'toggleFeatured'])->name('admin.blog.toggleFeatured');
+
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });

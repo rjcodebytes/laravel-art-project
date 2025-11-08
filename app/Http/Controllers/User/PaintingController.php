@@ -12,7 +12,7 @@ class PaintingController extends Controller
 {
     public function index()
     {
-        $paintings = Painting::latest()->paginate(10);
+        $paintings = Painting::where('status', 'public')->get();
         return view('collection', compact('paintings'));
     }
 

@@ -18,14 +18,7 @@
                     class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#1c1311] hover:bg-[#f3e9df] transition shadow-sm">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
-                <a href="mailto:yashwantgarud77@gmail.com"
-                    class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#1c1311] hover:bg-[#f3e9df] transition shadow-sm">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <a href="tel:+919284242035"
-                    class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#1c1311] hover:bg-[#f3e9df] transition shadow-sm">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
+                
             </div>
         </div>
 
@@ -38,7 +31,7 @@
                     <ul class="space-y-2">
                         <li><a href="/collection" class="hover:text-[#d4b28c] transition">Collection</a></li>
                         <li><a href="/about" class="hover:text-[#d4b28c] transition">About</a></li>
-                        <li><a href="/my-blogs" class="hover:text-[#d4b28c] transition">My Blogs</a></li>
+                        <li><a href="/blogs" class="hover:text-[#d4b28c] transition">Blogs</a></li>
                     </ul>
                 </div>
 
@@ -59,9 +52,9 @@
         © {{ date('Y') }} Yashwant Garud. All rights reserved.
     </div>
 
-    <div class="text-center text-xs text-gray-400 mt-2">
+    {{--<div class="text-center text-xs text-gray-400 mt-2">
         Designed &amp; Developed by
         <a href="https://www.linkedin.com/company/oneinmedia" target="_blank" rel="noopener noreferrer"
            class="text-[#d4b28c] hover:underline ml-1">1inMedia</a>
-    </div>
+    </div>--}}
 </footer>

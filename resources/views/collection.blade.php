@@ -28,18 +28,12 @@
                                 class="font-serif text-lg md:text-xl text-[#2f2f2f] font-semibold leading-snug transition-colors duration-300 group-hover:text-[#7a5e3a]">
                                 {{ $p->title }}
                             </h3>
-
-                            <p class="text-sm text-gray-500 js-description"
-                                data-fulltext="{{ $p->subtitle ?? $p->description ?? 'Beautiful hand-painted artwork on canvas.' }}">
-                                {{ Str::limit($p->subtitle ?? $p->description ?? 'Beautiful hand-painted artwork on canvas.', 60) }}
-                            </p>
-
                         </div>
 
                         {{-- 🟤 Bottom Section: Dimension --}}
                         <div class="mt-1">
                             <div class="flex items-center justify-between text-sm text-gray-600">
-                                <p class="text-gray-500  mt-1 mb-2">{{ $p->category }} | {{ $p->medium }}</p>
+                                <p class="text-gray-500  mt-1 mb-2">{{ $p->medium }}</p>
                                 <span class="text-right ml-4">{{ $p->dimensions ?? '24 x 36 in' }}</span>
                             </div>
                         </div>

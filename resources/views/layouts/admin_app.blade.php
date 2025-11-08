@@ -24,6 +24,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 
     @stack('styles')
+    
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-inter flex min-h-screen">

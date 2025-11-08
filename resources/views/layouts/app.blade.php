@@ -21,7 +21,7 @@
 		content="@yield('og_description', 'Discover curated artworks and collections by Yashwant Garud.')">
 	<meta property="og:type" content="@yield('og_type', 'website')">
 	<meta property="og:url" content="{{ url()->current() }}">
-	<meta property="og:image" content="@yield('og_image', asset('logo.webp'))">
+	<meta property="og:image" content="@yield('og_image', asset('default-og-image.jpg'))">
 	<meta property="og:site_name" content="{{ config('app.name', 'Laravel Art Project') }}">
 
 	<!-- Twitter Card -->
@@ -29,7 +29,7 @@
 	<meta name="twitter:title" content="@yield('twitter_title', config('app.name', 'Laravel Art Project'))">
 	<meta name="twitter:description"
 		content="@yield('twitter_description', 'Discover curated artworks and collections by Yashwant Garud.')">
-	<meta name="twitter:image" content="@yield('twitter_image', asset('logo.webp'))">
+	<meta name="twitter:image" content="@yield('twitter_image', asset('default-og-image.jpg'))">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
@@ -77,8 +77,22 @@
 	<script>
 		AOS.init({
 			duration: 1000,  // Animation duration in ms
- // Animate only once per element
+			// Animate only once per element
 		});
+
+		{{-- // Disable right-click
+		document.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+		});
+
+		// Optional: Disable F12, Ctrl+Shift+I, Ctrl+U (basic devtools block)
+		document.onkeydown = function (e) {
+			if (e.keyCode == 123 || // F12
+				(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || // Ctrl+Shift+I / J
+				(e.ctrlKey && e.keyCode == 85)) { // Ctrl+U
+				return false;
+			}
+		};--}}
 	</script>
 
 	@stack('scripts')

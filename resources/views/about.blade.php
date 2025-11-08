@@ -69,35 +69,29 @@
     </style>
 
     <section id="aboutSection" class="about-gradient-bg p-8 mt-28 md:mt-26 min-h-[70vh] md:min-h-[85vh] flex items-center">
-        <div class="container mx-auto flex flex-col lg:flex-row gap-10 items-center relative z-10">
+        <div class="container mx-auto flex flex-col lg:flex-row gap-10 items-center relative z-10 ">
             <!-- Left Image -->
-            <div data-aos="zoom-in" class="flex-1 left-image md:relative md:bottom-20">
+            <div class="flex-1 left-image md:relative">
                 <img src="{{ asset('images/yashwant-bg.webp') }}" alt="Yashwant Garud"
                     class="w-full h-auto rounded-xl object-cover">
             </div>
 
             <!-- Right Info -->
             <div class="flex-1 flex flex-col justify-center gap-4 about-text">
-                <p data-aos="fade-left" data-aos-delay="100" class="text-4xl text-[#f3e9dd] font-bold font-serif ">Hey,</p>
-                <h1 data-aos="fade-left" data-aos-delay="150" class="text-4xl sm:text-5xl font-bold text-[#f3e9dd] mb-2 font-serif intro-heading">
-                    I am Yashwant Garud
-                </h1>
-                <div data-aos="fade-left" data-aos-delay="200" class="accent-line"></div>
-
-                <p data-aos="fade-left" data-aos-delay="250" class="mt-6">
+                <p >
                     I am a professional artist from Shendurni, a town located near the world-famous Ajanta Caves in
                     Maharashtra.
                     Growing up close to this heritage site has had a lasting influence on my artistic perspective and
                     thematic choices.
                 </p>
-                <p data-aos="fade-left" data-aos-delay="300" >
+                <p >
                     I pursued my formal art education at the Khiroda School of Art, completing the Foundation Course in Fine
                     Arts,
                     followed by an Art Teacher’s Diploma (A.T.D.) and a G.D. Art (Commercial) degree from Abhinav Kala
                     Mahavidyalaya, Pune.
                     These academic foundations provided a strong base in technique, composition, and applied art principles.
                 </p>
-                <p data-aos="fade-left" data-aos-delay="350" >
+                <p >
                     Living close to Ajanta naturally drew me to the timeless beauty of its cave paintings. Their colors,
                     emotions,
                     and intricate storytelling continue to inspire my work. Over the years, I have focused extensively on
@@ -108,7 +102,7 @@
                     excellence of
                     the Ajanta paintings through modern mediums.
                 </p>
-                <p data-aos="fade-left" data-aos-delay="400" >
+                <p >
                     My journey as an artist is guided by patience, devotion, and a constant dialogue between heritage and
                     modernity.
                     Every painting I create is a humble attempt to keep that dialogue alive, to let the art of the past
