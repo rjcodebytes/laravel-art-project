@@ -28,11 +28,6 @@ Route::get('/privacy-policy', function () {
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/gallery', function () {
-    return view('gallery');
-});
-
-
 Route::get('/blogs', [UserBlogController::class, 'index'])->name('myblogs.index');
 Route::get('/blogs/{slug}', [UserBlogController::class, 'show'])->name('blog.show');
 
@@ -41,7 +36,6 @@ Route::get('/collection', [UserPaintingController::class, 'index'])->name('colle
 Route::get('/collection/{slug}', [UserPaintingController::class, 'show'])->name('collection.show');
 Route::get('/collection/{slug}/enquiry', [UserPaintingController::class, 'enquiry'])->name('enquiry.painting');
 Route::post('/collection/{slug}/enquiry', [UserPaintingController::class, 'sendEnquiry'])->name('enquiry.painting.send');
-
 
 
 
@@ -71,4 +65,69 @@ Route::middleware(['admin'])->group(function () {
     Route::patch('/admin/blogs/{id}/toggle-featured', [BlogController::class, 'toggleFeatured'])->name('admin.blog.toggleFeatured');
 
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+});
+
+
+
+
+
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Response;
+
+Route::get('/sitemap.xml', function () {
+
+    $urls = [
+        [
+            'loc' => url('/'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'weekly',
+            'priority' => '1.0'
+        ],
+        [
+            'loc' => url('/about'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.8'
+        ],
+        [
+            'loc' => url('/contact'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.8'
+        ],
+        [
+            'loc' => url('/collection'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'weekly',
+            'priority' => '0.9'
+        ],
+        [
+            'loc' => url('/blogs'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'weekly',
+            'priority' => '0.9'
+        ],
+        [
+            'loc' => url('/contact'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.8'
+        ],
+        [
+            'loc' => url('/terms-and-conditions'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'yearly',
+            'priority' => '0.5'
+        ],
+        [
+            'loc' => url('/privacy-policy'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'yearly',
+            'priority' => '0.5'
+        ],
+    ];
+
+    $xml = view('sitemap', ['urls' => $urls]);
+
+    return Response::make($xml, 200)->header('Content-Type', 'application/xml');
 });

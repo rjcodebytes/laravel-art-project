@@ -5,7 +5,6 @@
 
 @section('content')
 
-    {{-- -<x-loader /> --}}
     <x-hero-slider />
     @include('partials.featured')
     <x-testimonial-slider />

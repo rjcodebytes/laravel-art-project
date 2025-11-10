@@ -5,7 +5,7 @@
 @section('content')
 <section class="bg-[#fdfaf7] text-[#1a1817] py-10 px-6 sm:px-10 lg:px-20 font-sans mt-22">
     <div class="max-w-5xl mx-auto">
-        <!-- Header -->
+
         <div class="text-center mb-12">
             <h1 class="text-4xl sm:text-5xl font-serif font-bold text-[#5c4033] mb-4">
                 Terms & Conditions
@@ -14,8 +14,6 @@
                 Please read these terms carefully before using <span class="font-semibold">www.yashwantgarud.com</span>
             </p>
         </div>
-
-        <!-- Introduction -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Introduction</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -29,8 +27,6 @@
                 our use of cookies in accordance with Yashwant Garud’s Privacy Policy.
             </p>
         </div>
-
-        <!-- License -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">License to Use Website</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -47,8 +43,6 @@
                 <li>Redistribute material unless expressly made available for redistribution.</li>
             </ul>
         </div>
-
-        <!-- Acceptable Use -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Acceptable Use</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -62,8 +56,6 @@
                 <li>Do not use the website for marketing without express permission.</li>
             </ul>
         </div>
-
-        <!-- No Warranties -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">No Warranties</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -75,8 +67,6 @@
                 for legal, financial, or medical matters.
             </p>
         </div>
-
-        <!-- Limitations of Liability -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Limitations of Liability</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -89,8 +79,6 @@
                 <li>Any indirect or consequential damages.</li>
             </ul>
         </div>
-
-        <!-- Other Parties -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Other Parties</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -99,8 +87,6 @@
                 against these individuals in relation to your use of the website.
             </p>
         </div>
-
-        <!-- Unenforceable Provisions -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Unenforceable Provisions</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -108,8 +94,6 @@
                 the remaining provisions will continue to be in effect.
             </p>
         </div>
-
-        <!-- Entire Agreement -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Entire Agreement</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -117,8 +101,6 @@
                 agreement between you and Yashwant Garud concerning the use of this website.
             </p>
         </div>
-
-        <!-- Law & Jurisdiction -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-[#3b2d26] mb-3">Law & Jurisdiction</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -126,8 +108,6 @@
                 Any disputes shall fall under the exclusive jurisdiction of the courts of Maharashtra.
             </p>
         </div>
-
-        <!-- Contact -->
         <div class="border-t border-gray-300 pt-8 mt-10 text-center">
             <p class="text-gray-700">For any questions, please contact:</p>
             <p class="text-[#5c4033] font-medium mt-1">yashwantgarud77@gmail.com</p>

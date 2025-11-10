@@ -1,7 +1,5 @@
 <footer class="bg-[#1c1311] text-gray-300 pt-10 pb-5">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- Logo + Social Links -->
         <div>
             <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-20 mb-4">
 
@@ -21,11 +19,8 @@
                 
             </div>
         </div>
-
-        <!-- Quick Links + Support -->
         <div class="col-span-2">
             <div class="grid grid-cols-2 gap-6 sm:gap-10">
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-white font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
@@ -34,8 +29,6 @@
                         <li><a href="/blogs" class="hover:text-[#d4b28c] transition">Blogs</a></li>
                     </ul>
                 </div>
-
-                <!-- Support -->
                 <div>
                     <h3 class="text-white font-semibold mb-4">Support</h3>
                     <ul class="space-y-2">

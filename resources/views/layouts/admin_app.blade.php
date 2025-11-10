@@ -14,6 +14,8 @@
     <!-- Styles / Scripts (Tailwind via Vite) -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/jodit-blog-editor.js'])
+
     @else
         <style>
             /* Inline Tailwind fallback. Place your compiled Tailwind CSS here if needed. */
@@ -154,7 +156,7 @@
             class="fixed top-5 right-5 z-[9999]">
             <div class="flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg text-white
                                 @if(session('success')) bg-green-500
-                                @elseif(session('error')) bg-red-500
+                                @elseif(session('error')) bg-red-500 
                                 @else bg-blue-600 @endif">
                 <i class="fa-solid 
                                 @if(session('success')) fa-circle-check

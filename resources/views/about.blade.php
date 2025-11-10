@@ -5,7 +5,6 @@
 
 @section('content')
     <style>
-        /* 🌆 Dark brown gradient background with cream-brown splash */
         .about-gradient-bg {
             position: relative;
             overflow: hidden;
@@ -13,13 +12,11 @@
             background: linear-gradient(135deg, #3c2f2f 0%, #4b3621 50%, #2d1f16 100%);
         }
 
-        /* Splash highlight overlay */
         .about-gradient-bg::before {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 2;
-            /* 👈 ensures it appears above background, but under text */
             pointer-events: none;
             transition: opacity 0.45s ease, transform 0.7s cubic-bezier(.2, .9, .2, 1);
             opacity: 0;
@@ -36,21 +33,18 @@
             transform: scale(1.1);
         }
 
-        /* Content wrapper above splash */
         .about-gradient-bg>* {
             position: relative;
             z-index: 5;
         }
 
-
-        /* Image shadow enhancement */
         .left-image img {
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
             border-radius: 1rem;
             transition: transform 0.6s ease;
         }
 
-        /* Paragraph styling */
+
         .about-text {
             color: #f5e9d7;
             font-size: 1.05rem;
@@ -58,7 +52,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* Accent line under name */
+  
         .accent-line {
             width: 60px;
             height: 3px;
@@ -69,14 +63,11 @@
     </style>
 
     <section id="aboutSection" class="about-gradient-bg p-8 mt-28 md:mt-26 min-h-[70vh] md:min-h-[85vh] flex items-center">
-        <div class="container mx-auto flex flex-col lg:flex-row gap-10 items-center relative z-10 ">
-            <!-- Left Image -->
+        <div class="container mx-auto flex flex-col lg:flex-row gap-10 relative z-10 ">
             <div class="flex-1 left-image md:relative">
-                <img src="{{ asset('images/yashwant-bg.webp') }}" alt="Yashwant Garud"
+                <img src="{{ asset('images/yashwant-bg.jpg') }}" alt="Yashwant Garud"
                     class="w-full h-auto rounded-xl object-cover">
             </div>
-
-            <!-- Right Info -->
             <div class="flex-1 flex flex-col justify-center gap-4 about-text">
                 <p >
                     I am a professional artist from Shendurni, a town located near the world-famous Ajanta Caves in
@@ -114,15 +105,12 @@
     </section>
     
 
-    <section id="exhibitions" class=" text-white py-16 md:py-10 overflow-hidden">
+    <section id="exhibitions" class=" text-white pt-10 overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 md:px-10">
             <h2 data-aos="fade-down" class="text-center text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#574c4a] mb-8">
                 Exhibitions & Media Coverage
             </h2>
-
-            <!-- Collage Layout -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 auto-rows-[600px] md:auto-rows-[558px]">
-                <!-- LEFT SIDE (3 stacked images) -->
                 <div class="grid grid-rows-3 gap-4 md:gap-6">
                     <div data-aos="zoom-in" data-aos-delay="100" class="overflow-hidden rounded-xl group">
                         <img src="{{ asset('images/exhibitions/ex1.jpg') }}" alt="Exhibition 1"
@@ -140,7 +128,6 @@
                     </div>
                 </div>
 
-                <!-- RIGHT SIDE (2 newspaper + 1 video) -->
                 <div class="grid grid-rows-3 gap-4 md:gap-6">
                     <div class="grid grid-cols-2 gap-4 md:gap-6 row-span-1">
                         <div data-aos="zoom-in" data-aos-delay="250" class="overflow-hidden rounded-xl group">
@@ -164,8 +151,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Quote Section -->
     <section data-aos="zoom-in" class="relative m-5 md:m-10 rounded-3xl -bg-[position:center_70%] bg-cover bg-no-repeat py-12 text-white"
         style="background-image: url('/images/artist-banner3.png');">
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -191,11 +176,9 @@
         </div>
     </section>
 
-    <!-- GSAP Animation -->
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-
-            // Splash hover effect: set combined --splash-pos and throttle updates with rAF
             const aboutBg = document.getElementById('aboutSection');
             if (aboutBg) {
                 let raf = null;
@@ -209,16 +192,13 @@
                         raf = null;
                     });
                 }
-
                 aboutBg.addEventListener('mousemove', onMove, { passive: true });
                 aboutBg.addEventListener('mouseenter', (e) => {
-                    // position immediately on enter
                     onMove(e);
                     aboutBg.classList.add('splash-active');
                 }, { passive: true });
                 aboutBg.addEventListener('mouseleave', () => {
                     aboutBg.classList.remove('splash-active');
-                    // optional: cleanup position
                     aboutBg.style.setProperty('--splash-pos', `50% 50%`);
                 }, { passive: true });
             }

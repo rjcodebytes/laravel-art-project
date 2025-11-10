@@ -3,6 +3,7 @@ import './bootstrap';
 // ✅ Correct for Jodit v4+
 import 'jodit/es2021/jodit.min.css';
 import Jodit from 'jodit/es2021/jodit.min.js';
+import './jodit-blog-editor';
 
 document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('#editor');

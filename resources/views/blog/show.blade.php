@@ -2,7 +2,7 @@
 
 @section('title', $post->title . ' - Yashwant Garud')
 @section('meta_description', Str::limit(strip_tags($post->excerpt ?? $post->description), 150))
-@section('meta_keywords', 'art blog, ' . $post->title . ', Yashwant Garud')
+@section('meta_keywords', 'art blog, ' . $post->keywords . ', Yashwant Garud')
 
 {{-- 🌟 Open Graph / Social Meta Tags --}}
 @section('og_title', $post->title)

@@ -26,10 +26,11 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'keywords' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,webp|max:2048',
         ]);
 
-        $data = $request->only('title', 'description');
+        $data = $request->only('title', 'description', 'keywords');
         $data['slug'] = Str::slug($data['title']);
         $data['excerpt'] = Str::limit(strip_tags($data['description']), 120);
 
@@ -41,6 +42,7 @@ class BlogController extends Controller
         return redirect()->route('admin.myblog')->with('success', 'Blog created successfully!');
     }
 
+
     public function edit(Blog $blog)
     {
         $blog = Blog::findOrFail($blog->id);
@@ -49,15 +51,16 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
-        $blog = Blog::findOrFail($id); // ✅ fetch blog manually
+        $blog = Blog::findOrFail($id);
 
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'keywords' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,webp|max:2048',
         ]);
 
-        $data = $request->only('title', 'description');
+        $data = $request->only('title', 'description', 'keywords');
         $data['slug'] = Str::slug($data['title']);
         $data['excerpt'] = Str::limit(strip_tags($data['description']), 120);
 
@@ -72,7 +75,6 @@ class BlogController extends Controller
 
         return redirect()->route('admin.myblog')->with('success', 'Blog updated successfully!');
     }
-
 
     public function destroy(Blog $blog)
     {

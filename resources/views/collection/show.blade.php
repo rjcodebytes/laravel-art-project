@@ -54,14 +54,13 @@
                 {{-- LEFT: IMAGE CAROUSEL --}}
                 <div class="p-6 md:p-0">
                     <div class="relative rounded-lg overflow-hidden border border-gray-200">
-                        <div id="carousel" class="relative w-full h-[500px] overflow-hidden bg-gray-100">
+                        <div id="carousel" class="relative w-full h-[200px] md:h-[500px] overflow-hidden bg-[#e8ded3]">
                             @foreach ($painting->images as $index => $img)
                                 <img src="{{ asset('storage/' . $img) }}"
-                                    class="carousel-img absolute inset-0 w-full h-full object-contain bg-white transition-opacity duration-700 ease-in-out {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}">
+                                    class="carousel-img absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}">
                             @endforeach
                         </div>
 
-                        {{-- Carousel Controls --}}
                         <button id="prevBtn"
                             class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 shadow-md transition duration-300">
                             &#10094;
@@ -73,11 +72,10 @@
                         </button>
                     </div>
 
-                    {{-- Thumbnails --}}
                     <div class="flex justify-center gap-3 mt-4">
                         @foreach ($painting->images as $index => $img)
                             <img src="{{ asset('storage/' . $img) }}"
-                                class="thumb w-20 h-20 object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-gray-400 hover:scale-105 transition-transform duration-300"
+                                class="thumb w-10 h-10 md:w-20 md:h-20 object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-gray-400 hover:scale-105 transition-transform duration-300"
                                 data-index="{{ $index }}">
                         @endforeach
                     </div>
@@ -118,7 +116,7 @@
                     @endif
 
                     {{-- Contact Button --}}
-                    <div class="mt-8 fade-up delay-6 flex justify-center">
+                    <div class="mt-8 fade-up delay-6 flex justify-start">
                         <a href="{{ route('enquiry.painting', $painting->slug) }}"
                             class="contact-btn inline-block text-[#1a1817] text-center px-6 py-3 rounded-md font-medium shadow-md transition-all duration-500 relative overflow-hidden">
                             <span class="relative z-10">Contact Me for Purchase</span>

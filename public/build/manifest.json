@@ -4,7 +4,7 @@
     "name": "ScrollTrigger"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BhWGGEg3.css",
+    "file": "assets/app-C7853SpR.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -21,12 +21,13 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CQwCgNNY.js",
+    "file": "assets/app-CgD7nrYM.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "resources/js/bootstrap.js"
+      "resources/js/bootstrap.js",
+      "resources/js/jodit-blog-editor.js"
     ],
     "css": [
       "assets/app-iA9dIyhR.css"
@@ -45,6 +46,15 @@
     "isEntry": true,
     "imports": [
       "_ScrollTrigger-lnFyu4_T.js"
+    ]
+  },
+  "resources/js/jodit-blog-editor.js": {
+    "file": "assets/jodit-blog-editor-0Bd-tAs1.js",
+    "name": "jodit-blog-editor",
+    "src": "resources/js/jodit-blog-editor.js",
+    "isEntry": true,
+    "css": [
+      "assets/jodit-blog-editor-B4PQWxYa.css"
     ]
   }
 }

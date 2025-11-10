@@ -20,13 +20,12 @@
     </section>
 
     @php
-        $latestPost = $posts->first(); // latest post
-        $featuredPosts = $posts->where('featured', true)->skip(0); // featured posts
+        $latestPost = $posts->first();
+        $featuredPosts = $posts->where('featured', true)->skip(0);
     @endphp
 
     <section class="max-w-7xl mx-auto px-6 flex justify-center">
         <div class="w-full grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10 mb-5 items-start">
-            <!-- Left: Latest Blog -->
             @if($latestPost)
                 <div class="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-500">
                     <a href="{{ route('blog.show', $latestPost->slug) }}">
@@ -40,8 +39,6 @@
                     </a>
                 </div>
             @endif
-
-            <!-- Right: Featured Posts -->
             <div class="lg:pl-6">
                 <h4
                     class=" text-2xl font-semibold text-[#564b49] mb-4 border-b border-gray-200 pb-2 text-center lg:text-left">
@@ -62,7 +59,6 @@
             </div>
         </div>
     </section>
-    <!-- All Blog Posts Section -->
     <section class="max-w-7xl mx-auto px-6 my-5">
         <h2 class="text-2xl md:text-3xl font-bold text-[#564b49] mb-8 text-center">
             All Blog Posts

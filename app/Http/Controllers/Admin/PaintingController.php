@@ -49,7 +49,7 @@ class PaintingController extends Controller
         }
 
         $validated['images'] = $imagePaths;
-        $validated['slug'] = Str::slug($validated['title'] . '-' . Str::random(5));
+        $validated['slug'] = Str::slug($validated['title']);
 
         Painting::create($validated);
 
@@ -93,6 +93,7 @@ class PaintingController extends Controller
         }
 
         $validated['images'] = $imagePaths;
+        $validated['slug'] = Str::slug($validated['title']);
 
         $painting->update($validated);
 
