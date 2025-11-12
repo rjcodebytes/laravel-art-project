@@ -45,7 +45,7 @@
                     <img src="{{ asset('storage/' . $painting->images[0]) }}"
                         class="w-full h-[400px] object-contain rounded-lg border border-gray-300 mb-4">
                     <h2 class="text-2xl font-bold text-gray-800">{{ $painting->title }}</h2>
-                    <p class="text-gray-500 mt-1 mb-2">{{ $painting->category }} | {{ $painting->medium }}</p>
+                    <p class="text-gray-500 mt-1 mb-2">{{ $painting->medium }} | {{ $painting->dimensions }}</p>
                 </div>
 
                 {{-- RIGHT: Enquiry Form --}}

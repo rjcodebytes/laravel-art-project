@@ -95,12 +95,7 @@
                     <p class="text-2xl font-semibold text-amber-600 mb-1">₹ {{ number_format($painting->price) }}</p>
                     <p class="text-xs text-gray-500 mb-6">(Inclusive of GST)</p>
                 @endif
-                <div class="mt-5 flex justify-start">
-                    <a href="{{ route('enquiry.painting', $painting->slug) }}"
-                        class="contact-btn text-white text-center px-6 py-3 rounded-md font-medium shadow-md">
-                        Enquire Now →
-                    </a>
-                </div>
+             <div class="mt-5 fade-up delay-6 flex justify-start"> <a href="{{ route('enquiry.painting', $painting->slug) }}" class="group inline-block bg-[#6b3e26] text-white text-center px-6 py-3 rounded-md font-medium shadow-md transition-all duration-500 relative overflow-hidden hover:bg-[#5a341f]"> <span class="relative z-10 flex items-center justify-center"> Enquire Now <i class="fa-solid fa-arrow-right fa-sm ml-2 transform -translate-x-0 -rotate-45 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-0 group-active:translate-x-1 group-active:rotate-0"> </i> </span> </a> </div>
             </div>
         </div>
     </div>

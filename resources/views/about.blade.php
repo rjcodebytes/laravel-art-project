@@ -52,7 +52,7 @@
             letter-spacing: 0.2px;
         }
 
-  
+
         .accent-line {
             width: 60px;
             height: 3px;
@@ -69,20 +69,20 @@
                     class="w-full h-auto rounded-xl object-cover">
             </div>
             <div class="flex-1 flex flex-col justify-center gap-4 about-text">
-                <p >
+                <p>
                     I am a professional artist from Shendurni, a town located near the world-famous Ajanta Caves in
                     Maharashtra.
                     Growing up close to this heritage site has had a lasting influence on my artistic perspective and
                     thematic choices.
                 </p>
-                <p >
+                <p>
                     I pursued my formal art education at the Khiroda School of Art, completing the Foundation Course in Fine
                     Arts,
                     followed by an Art Teacher’s Diploma (A.T.D.) and a G.D. Art (Commercial) degree from Abhinav Kala
                     Mahavidyalaya, Pune.
                     These academic foundations provided a strong base in technique, composition, and applied art principles.
                 </p>
-                <p >
+                <p>
                     Living close to Ajanta naturally drew me to the timeless beauty of its cave paintings. Their colors,
                     emotions,
                     and intricate storytelling continue to inspire my work. Over the years, I have focused extensively on
@@ -93,7 +93,7 @@
                     excellence of
                     the Ajanta paintings through modern mediums.
                 </p>
-                <p >
+                <p>
                     My journey as an artist is guided by patience, devotion, and a constant dialogue between heritage and
                     modernity.
                     Every painting I create is a humble attempt to keep that dialogue alive, to let the art of the past
@@ -103,11 +103,12 @@
             </div>
         </div>
     </section>
-    
+
 
     <section id="exhibitions" class=" text-white pt-10 overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 md:px-10">
-            <h2 data-aos="fade-down" class="text-center text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#574c4a] mb-8">
+            <h2 data-aos="fade-down"
+                class="text-center text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#574c4a] mb-8">
                 Exhibitions & Media Coverage
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 auto-rows-[600px] md:auto-rows-[558px]">
@@ -140,7 +141,8 @@
                         </div>
                     </div>
 
-                    <div data-aos="zoom-in" data-aos-delay="350" class="row-span-2 overflow-hidden rounded-xl relative bg-[#2e2a28] group">
+                    <div data-aos="zoom-in" data-aos-delay="350"
+                        class="row-span-2 overflow-hidden rounded-xl relative bg-[#2e2a28] group">
                         <iframe class="absolute inset-0 w-full h-full"
                             src="https://www.youtube.com/embed/KJNWuVwRPS8?autoplay=0&mute=1&rel=0" title="Exhibition Video"
                             frameborder="0"
@@ -151,23 +153,31 @@
             </div>
         </div>
     </section>
-    <section data-aos="zoom-in" class="relative m-5 md:m-10 rounded-3xl -bg-[position:center_70%] bg-cover bg-no-repeat py-12 text-white"
+    <section data-aos="zoom-in"
+        class="relative m-5 md:m-10 rounded-3xl -bg-[position:center_70%] bg-cover bg-no-repeat py-12 text-white"
         style="background-image: url('/images/artist-banner3.png');">
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <h2 data-aos="fade-up" data-aos-delay="150" class="text-4xl sm:text-5xl font-extrabold font-serif mb-6 tracking-wide">
+            <h2 data-aos="fade-up" data-aos-delay="150"
+                class="text-4xl sm:text-5xl font-extrabold font-serif mb-6 tracking-wide">
                 The Walls of Ajanta Whisper Stories
             </h2>
             <p data-aos="fade-up" data-aos-delay="200" class="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed">
-                My art draws life from the Ajanta Caves — a world of timeless colors, emotions,
-                and divine stories. From recreating ancient murals to crafting custom artworks
-                that echo India’s cultural essence — every painting tells a story waiting to live
-                on your walls.
+                My art draws life from the Ajanta Caves, a world of timeless colors, emotions, and divine stories. From
+                recreating ancient murals to crafting custom artworks that echo India’s cultural essence, every painting
+                tells a story waiting to live on your walls.
             </p>
 
-            <a data-aos="fade-up" data-aos-delay="250" href="{{ url('/contact') }}"
-                class="group inline-flex items-center justify-center bg-[#d4b28c] hover:bg-[#c19a74] active:bg-[#c19a74] text-[#1a1817] font-semibold text-sm md:text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-1 active:-translate-y-1">
+            <a data-aos="fade-up" data-aos-delay="250" href="{{ route('collection.index') }}" class="group inline-flex items-center justify-center 
+        w-auto sm:w-auto  <!-- 👈 no full width on mobile -->
+        bg-[#d4b28c] hover:bg-[#c19a74] active:bg-[#c19a74] 
+        text-[#1a1817] font-semibold text-base sm:text-lg 
+        whitespace-nowrap  <!-- 👈 prevents text breaking -->
+        px-6 sm:px-8 py-3 sm:py-4 
+        rounded-full shadow-lg 
+        transition-all duration-300 transform 
+        hover:-translate-y-1 active:-translate-y-1">
 
-                <span class="transition-transform duration-300">Acquire Ajanta’s Enduring Artistry</span>
+                <span class="transition-transform duration-300">View Collection</span>
 
                 <i
                     class="fa-solid fa-arrow-right fa-sm ml-2 transform -translate-x-0 -rotate-45 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-0 group-active:translate-x-1 group-active:rotate-0">
