@@ -5,6 +5,10 @@ import 'jodit/es2021/jodit.min.css';
 import Jodit from 'jodit/es2021/jodit.min.js';
 import './jodit-blog-editor';
 
+import Glide from '@glidejs/glide';
+import '@glidejs/glide/dist/css/glide.core.min.css';
+import '@glidejs/glide/dist/css/glide.theme.min.css';
+
 document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('#editor');
     if (textarea) {

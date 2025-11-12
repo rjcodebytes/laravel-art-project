@@ -4,7 +4,7 @@
     "name": "ScrollTrigger"
   },
   "resources/css/app.css": {
-    "file": "assets/app-C7853SpR.css",
+    "file": "assets/app-C2BYsmnI.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -21,7 +21,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CgD7nrYM.js",
+    "file": "assets/app-C9RyyGzu.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -30,7 +30,7 @@
       "resources/js/jodit-blog-editor.js"
     ],
     "css": [
-      "assets/app-iA9dIyhR.css"
+      "assets/app-BEmEV6yH.css"
     ]
   },
   "resources/js/bootstrap.js": {

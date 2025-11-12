@@ -65,7 +65,7 @@
     <section id="aboutSection" class="about-gradient-bg p-8 mt-28 md:mt-26 min-h-[70vh] md:min-h-[85vh] flex items-center">
         <div class="container mx-auto flex flex-col lg:flex-row gap-10 relative z-10 ">
             <div class="flex-1 left-image md:relative">
-                <img src="{{ asset('images/yashwant-bg.jpg') }}" alt="Yashwant Garud"
+                <img src="{{ asset('images/yashwant-bg.JPG') }}" alt="Yashwant Garud"
                     class="w-full h-auto rounded-xl object-cover">
             </div>
             <div class="flex-1 flex flex-col justify-center gap-4 about-text">

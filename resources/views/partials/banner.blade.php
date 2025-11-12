@@ -6,10 +6,9 @@
             The Walls of Ajanta Whisper Stories
         </h2>
         <p data-aos="fade-up" data-aos-delay="200" class="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed">
-            My art draws life from the Ajanta Caves — a world of timeless colors, emotions,
-            and divine stories. From recreating ancient murals to crafting custom artworks
-            that echo India’s cultural essence — every painting tells a story waiting to live
-            on your walls.
+            My art draws life from the Ajanta Caves, a world of timeless colors, emotions, and divine stories. From
+            recreating ancient murals to crafting custom artworks that echo India’s cultural essence, every painting
+            tells a story waiting to live on your walls.
         </p>
 
         <a data-aos="fade-up" data-aos-delay="250" href="{{ route('collection.index') }}" class="group inline-flex items-center justify-center 

@@ -17,6 +17,8 @@
 					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">Collection</a>
 				<a href="{{ url('/about') }}"
 					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">About</a>
+				<a href="{{ url('/contact') }}"
+					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">Contact Us</a>
 				<a href="{{ url('/blogs') }}"
 					class="text-xl font-medium text-[#e8ded4] hover:text-white transition">Blogs</a>
 			</div>
@@ -45,6 +47,8 @@
 				class="block px-3 py-2 rounded-md text-base font-medium text-[#e8ded4] hover:bg-white/10">Collection</a>
 			<a href="{{ url('/about') }}"
 				class="block px-3 py-2 rounded-md text-base font-medium text-[#e8ded4] hover:bg-white/10">About</a>
+			<a href="{{ url('/contact') }}"
+				class="block px-3 py-2 rounded-md text-base font-medium text-[#e8ded4] hover:bg-white/10">Contact Us</a>
 			<a href="{{ url('/blogs') }}"
 				class="block px-3 py-2 rounded-md text-base font-medium text-[#e8ded4] hover:bg-white/10">Blogs</a>
 

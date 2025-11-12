@@ -9,10 +9,10 @@
     <section id="blog-header" class="relative mt-36 md:mt-40 mb-8 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-2 md:mb-10 animate-blog-header">
-                <h2 class="text-4xl sm:text-5xl font-extrabold font-serif text-[#564b49] mb-4">
+                <h2 class="text-3xl sm:text-5xl font-extrabold font-serif text-[#564b49] mb-4">
                     Artist Insights & Stories
                 </h2>
-                <p class="text-lg text-gray-600">
+                <p class="text-md sm:text-lg text-gray-600">
                     Explore the latest blog posts, behind-the-scenes stories, and creative inspirations from the artist.
                 </p>
             </div>

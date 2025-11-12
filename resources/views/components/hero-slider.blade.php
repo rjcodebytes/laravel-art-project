@@ -2,7 +2,7 @@
     <div class="absolute inset-0 flex transition-transform duration-[2500ms] ease-in-out" id="slides-container"></div>
 
     <div data-aos="fade-up"
-        class="absolute bottom-10 md:bottom-15 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-center z-20 px-4">
+        class="absolute bottom-20 md:bottom-15 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-center z-20 px-4">
         <h2 class="text-[#e8ded4] text-xl sm:text-3xl md:text-4xl font-serif font-semibold mb-6 drop-shadow-lg 
         leading-snug sm:leading-tight 
         max-w-[260px] sm:max-w-none"> <!-- 👈 limits width on mobile for 2-line wrap -->
