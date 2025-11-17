@@ -19,7 +19,7 @@
                  'title' => "Senior Journalist & Art Researcher"],
 
                 ['quote' => "I witnessed an extraordinary exhibition that beautifully brings the spirit of Ajanta to life. Each painting reveals the depth and elegance of our ancient cultural heritage, rendered with remarkable clarity and devotion. The artworks truly reconnect us with the timeless soul of Indian art.", 
-                 'name' => "Prof. Pramod Madgulkar", 
+                 'name' => "Prof. Pramod Mahulikar", 
                  'title' => "Pro Vice Chancellor, K.B.C N.M.U, Jalgaon"],
 
                 ['quote' => "I saw a rare and precise exhibition. It clearly awakened awareness of our cultural heritage and native sensibilities. Such artistic presentation shows cultural depth and gives the viewer a pure experience. I salute this effort with respect.", 
