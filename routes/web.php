@@ -7,6 +7,8 @@ use App\Http\Controllers\User\PaintingController as UserPaintingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Models\Painting;
+use App\Models\Blog;
 
 Route::get('/', function () {
     return view('home');
@@ -76,7 +78,7 @@ use Illuminate\Support\Facades\Response;
 
 Route::get('/sitemap.xml', function () {
 
-    $urls = [
+    $staticUrls = [
         [
             'loc' => url('/'),
             'lastmod' => now()->toAtomString(),
@@ -108,12 +110,6 @@ Route::get('/sitemap.xml', function () {
             'priority' => '0.9'
         ],
         [
-            'loc' => url('/contact'),
-            'lastmod' => now()->toAtomString(),
-            'changefreq' => 'monthly',
-            'priority' => '0.8'
-        ],
-        [
             'loc' => url('/terms-and-conditions'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'yearly',
@@ -126,6 +122,30 @@ Route::get('/sitemap.xml', function () {
             'priority' => '0.5'
         ],
     ];
+
+    // ----- Dynamic Paintings -----
+    $paintingUrls = Painting::where('status', 'public')->get()->map(function ($painting) {
+        return [
+            'loc' => url('/collection/' . $painting->slug),
+            'lastmod' => $painting->updated_at->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.7'
+        ];
+    })->toArray();
+
+    // ----- Dynamic Blogs -----
+    $blogUrls = Blog::all()->map(function ($blog) {
+        return [
+            'loc' => url('/blogs/' . $blog->slug),
+            'lastmod' => $blog->updated_at->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.7'
+        ];
+    })->toArray();
+
+
+    // Merge all
+    $urls = array_merge($staticUrls, $paintingUrls, $blogUrls);
 
     $xml = view('sitemap', ['urls' => $urls]);
 

@@ -25,10 +25,12 @@ class Painting extends Model
         'tags',
         'slug',
         'status',
+        'related_paintings',
     ];
 
     protected $casts = [
         'images' => 'array',
+        'related_paintings' => 'array',
     ];
 
     // Automatically generate slug on creation
@@ -38,5 +40,10 @@ class Painting extends Model
         static::creating(function ($painting) {
             $painting->slug = Str::slug($painting->title . '-' . Str::random(5));
         });
+    }
+
+    public function related()
+    {
+        return $this->hasMany(Painting::class, 'id', 'related_paintings');
     }
 }

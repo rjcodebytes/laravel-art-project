@@ -20,8 +20,16 @@ class PaintingController extends Controller
     public function show($slug)
     {
         $painting = Painting::where('slug', $slug)->firstOrFail();
-        return view('collection.show', compact('painting'));
+
+        // Load related paintings (as objects)
+        $relatedPaintings = [];
+        if (!empty($painting->related_paintings)) {
+            $relatedPaintings = Painting::whereIn('id', $painting->related_paintings)->get();
+        }
+
+        return view('collection.show', compact('painting', 'relatedPaintings'));
     }
+
 
     public function enquiry($slug)
     {

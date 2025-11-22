@@ -75,156 +75,164 @@
     </div>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const existingImages = document.getElementById("existingImages");
-            const newImagePreview = document.getElementById("newImagePreview");
-            const form = document.getElementById("editPaintingForm");
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-            // safe CSRF token retrieval: prefer meta tag, fallback to server token
-            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-            const CSRF_TOKEN = csrfMeta ? csrfMeta.content : '{{ csrf_token() }}';
+    const existingImages = document.getElementById("existingImages");
+    const newImagePreview = document.getElementById("newImagePreview");
+    const form = document.getElementById("editPaintingForm");
 
-            // ✅ Open Modal and Fetch Painting
-            document.querySelectorAll(".edit-btn").forEach(button => {
-                button.addEventListener("click", async () => {
-                    const id = button.dataset.id;
-                    try {
-                        const response = await fetch(`/admin/myart/edit/${id}`);
-                        if (!response.ok) throw new Error('Failed to fetch painting');
-                        const painting = await response.json();
+    const selectRelated = document.getElementById("edit_related_paintings");
+    const relatedChips = document.getElementById("related_chips");
 
-                        // Fill form fields (guarding existence)
-                        if (document.getElementById("edit_painting_id")) document.getElementById("edit_painting_id").value = id;
-                        if (document.getElementById("edit_title")) document.getElementById("edit_title").value = painting.title || '';
-                        if (document.getElementById("edit_description")) document.getElementById("edit_description").value = painting.description || '';
-                        if (document.getElementById("edit_art_type")) document.getElementById("edit_art_type").value = painting.art_type || '';
-                        if (document.getElementById("edit_orientation")) document.getElementById("edit_orientation").value = painting.orientation || '';
-                        if (document.getElementById("edit_dimensions")) document.getElementById("edit_dimensions").value = painting.dimensions || '';
-                        if (document.getElementById("edit_medium")) document.getElementById("edit_medium").value = painting.medium || '';
-                        if (document.getElementById("edit_tags")) document.getElementById("edit_tags").value = painting.tags || '';
-                        if (document.getElementById("edit_status")) document.getElementById("edit_status").value = painting.status || 'draft';
+    const csrfMeta = document.querySelector("meta[name='csrf-token']");
+    const CSRF_TOKEN = csrfMeta ? csrfMeta.content : "{{ csrf_token() }}";
 
-                        // Show existing images with delete option (guard container)
-                        if (existingImages) {
-                            existingImages.innerHTML = "";
-                            if (painting.images && painting.images.length > 0) {
-                                painting.images.forEach((img) => {
-                                    const wrapper = document.createElement("div");
-                                    wrapper.className = "relative inline-block mr-2";
+    function renderChips(selectedIds, allPaintings) {
+        relatedChips.innerHTML = "";
 
-                                    const imgTag = document.createElement("img");
-                                    // use absolute storage asset (prevents relative-path confusion)
-                                    imgTag.src = "{{ rtrim(asset('storage'), '/') }}/" + img.replace(/^\/+/, '');
-                                    imgTag.className = "w-20 h-20 object-cover rounded-lg border";
+        selectedIds.forEach(id => {
+            const p = allPaintings.find(x => x.id == id);
+            if (!p) return;
 
-                                    const deleteBtn = document.createElement("button");
-                                    deleteBtn.type = "button";
-                                    deleteBtn.innerHTML = "❌";
-                                    deleteBtn.className =
-                                        "absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full p-1 hover:bg-red-600";
-                                    deleteBtn.addEventListener("click", async () => {
-                                        if (!confirm("Delete this image?")) return;
-                                        try {
-                                            const res = await fetch(`/admin/myart/delete-image/${painting.id}`, {
-                                                method: "POST",
-                                                headers: {
-                                                    "X-CSRF-TOKEN": CSRF_TOKEN,
-                                                    "Content-Type": "application/json",
-                                                    "X-Requested-With": "XMLHttpRequest"
-                                                },
-                                                body: JSON.stringify({ image: img }),
-                                                credentials: "same-origin"
-                                            });
-                                            if (!res.ok) throw new Error('Delete failed');
-                                            wrapper.remove();
-                                            window.dispatchEvent(new CustomEvent("show-toast", {
-                                                detail: { type: "success", message: "Image deleted" }
-                                            }));
-                                        } catch (err) {
-                                            console.error(err);
-                                            window.dispatchEvent(new CustomEvent("show-toast", {
-                                                detail: { type: "error", message: "Failed to delete image" }
-                                            }));
-                                        }
-                                    });
+            const chip = document.createElement("div");
+            chip.className = "px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm cursor-pointer";
+            chip.textContent = p.title;
 
-                                    wrapper.appendChild(imgTag);
-                                    wrapper.appendChild(deleteBtn);
-                                    existingImages.appendChild(wrapper);
-                                });
-                            }
-                        }
+            chip.addEventListener("click", () => {
+                // remove from select
+                const option = [...selectRelated.options].find(o => o.value == id);
+                if (option) option.selected = false;
 
-                        // Open modal via Alpine event
-                        window.dispatchEvent(new Event('open-edit-modal'));
-                    } catch (err) {
-                        console.error(err);
-                        alert('Could not load painting. Check console.');
-                    }
-                });
+                // remove chip
+                chip.remove();
             });
 
-            // ✅ New image preview (guard input)
-            const editImagesInput = document.getElementById("edit_images");
-            if (editImagesInput && newImagePreview) {
-                editImagesInput.addEventListener("change", e => {
-                    newImagePreview.innerHTML = "";
-                    for (let file of e.target.files) {
-                        if (!file.type.startsWith('image/')) continue;
-                        const reader = new FileReader();
-                        reader.onload = ev => {
-                            const img = document.createElement("img");
-                            img.src = ev.target.result;
-                            img.className = "w-20 h-20 object-cover rounded-lg border";
-                            newImagePreview.appendChild(img);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-
-            // ✅ Update painting (guard form)
-            if (form) {
-                form.addEventListener("submit", async e => {
-                    e.preventDefault();
-                    const id = document.getElementById("edit_painting_id").value;
-                    const formData = new FormData(form);
-
-                    try {
-                        const response = await fetch(`/admin/myart/update/${id}`, {
-                            method: "POST",
-                            body: formData,
-                            credentials: 'same-origin',
-                            headers: {
-                                "X-Requested-With": "XMLHttpRequest"
-                                // Do NOT set Content-Type when sending FormData
-                            }
-                        });
-                        const result = await response.json();
-                        if (response.ok && result.success) {
-                            window.dispatchEvent(new CustomEvent("show-toast", {
-                                detail: { type: "success", message: result.message }
-                            }));
-                            window.dispatchEvent(new Event('close-edit-modal'));
-                            setTimeout(() => window.location.reload(), 1000);
-                        } else {
-                            window.dispatchEvent(new CustomEvent("show-toast", {
-                                detail: { type: "error", message: result.message || "Failed to update painting." }
-                            }));
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        window.dispatchEvent(new CustomEvent("show-toast", {
-                            detail: { type: "error", message: "An error occurred." }
-                        }));
-                    }
-                });
-            }
+            relatedChips.appendChild(chip);
         });
-    </script>
+    }
 
+    // OPEN EDIT MODAL
+    document.querySelectorAll(".edit-btn").forEach(button => {
+        button.addEventListener("click", async () => {
 
+            const id = button.dataset.id;
+            const response = await fetch(`/admin/myart/edit/${id}`);
+            const data = await response.json();
+
+            const painting = data.painting;
+            const allPaintings = data.allPaintings;
+
+            // Fill fields
+            document.getElementById("edit_painting_id").value = id;
+            document.getElementById("edit_title").value = painting.title;
+            document.getElementById("edit_description").value = painting.description;
+            document.getElementById("edit_art_type").value = painting.art_type;
+            document.getElementById("edit_orientation").value = painting.orientation;
+            document.getElementById("edit_dimensions").value = painting.dimensions;
+            document.getElementById("edit_medium").value = painting.medium;
+            document.getElementById("edit_tags").value = painting.tags;
+            document.getElementById("edit_status").value = painting.status;
+
+            // Existing images
+            existingImages.innerHTML = "";
+            if (painting.images) {
+                painting.images.forEach(img => {
+                    const div = document.createElement("div");
+                    div.className = "relative inline-block";
+
+                    div.innerHTML = `
+                        <img src="/storage/${img}" class="w-20 h-20 object-cover rounded-lg border">
+                        <button class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs p-1">❌</button>
+                    `;
+
+                    div.querySelector("button").onclick = async () => {
+                        if (!confirm("Delete image?")) return;
+
+                        await fetch(`/admin/myart/delete-image/${painting.id}`, {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": CSRF_TOKEN,
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ image: img })
+                        });
+
+                        div.remove();
+                    };
+
+                    existingImages.appendChild(div);
+                });
+            }
+
+            // ---- Related Paintings ----
+            selectRelated.innerHTML = "";
+
+            allPaintings.forEach(p => {
+                const option = document.createElement("option");
+                option.value = p.id;
+                option.textContent = p.title;
+
+                if (painting.related_paintings?.includes(p.id)) {
+                    option.selected = true;
+                }
+
+                selectRelated.appendChild(option);
+            });
+
+            // Render chips
+            renderChips(painting.related_paintings || [], allPaintings);
+
+            // When user selects/deselects
+            selectRelated.addEventListener("change", () => {
+                const selectedIds = [...selectRelated.options]
+                    .filter(o => o.selected)
+                    .map(o => o.value);
+                renderChips(selectedIds, allPaintings);
+            });
+
+            window.dispatchEvent(new Event("open-edit-modal"));
+        });
+    });
+
+    // PREVIEW new images
+    document.getElementById("edit_images").addEventListener("change", e => {
+        newImagePreview.innerHTML = "";
+        [...e.target.files].forEach(file => {
+            const reader = new FileReader();
+            reader.onload = ev => {
+                newImagePreview.innerHTML += `
+                    <img src="${ev.target.result}" class="w-20 h-20 object-cover rounded-lg border">
+                `;
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    // SUBMIT FORM
+    form.addEventListener("submit", async e => {
+        e.preventDefault();
+
+        const id = document.getElementById("edit_painting_id").value;
+        const formData = new FormData(form);
+
+        const response = await fetch(`/admin/myart/update/${id}`, {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            window.dispatchEvent(new Event("close-edit-modal"));
+            location.reload();
+        } else {
+            alert(result.message || "Update failed");
+        }
+    });
+
+});
+</script>
 
 
 @endsection

@@ -59,7 +59,11 @@ class PaintingController extends Controller
     public function edit($id)
     {
         $painting = Painting::findOrFail($id);
-        return response()->json($painting);
+        $allPaintings = Painting::where('id', '!=', $id)
+                        ->select('id', 'title')
+                        ->orderBy('title')
+                        ->get();
+        return response()->json(['painting' => $painting, 'allPaintings' => $allPaintings]);
     }
 
     public function update(Request $request, $id)
@@ -80,6 +84,8 @@ class PaintingController extends Controller
             'artist_name' => 'nullable|string',
             'tags' => 'nullable|string',
             'status' => 'required|string|in:public,private,draft',
+            'related_paintings' => 'nullable|array', // ✅ new
+            'related_paintings.*' => 'exists:paintings,id',
         ]);
 
         // Handle image updates (append new)
@@ -94,7 +100,8 @@ class PaintingController extends Controller
 
         $validated['images'] = $imagePaths;
         $validated['slug'] = Str::slug($validated['title']);
-
+        $validated['related_paintings'] = $request->related_paintings ?? [];
+        
         $painting->update($validated);
 
         return response()->json(['success' => true, 'message' => 'Painting updated successfully!']);

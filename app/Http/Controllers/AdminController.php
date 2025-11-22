@@ -36,7 +36,8 @@ class AdminController extends Controller
     public function myArt()
     {
         $paintings = Painting::latest()->paginate(10);
-        return view('admin.myart.page', compact('paintings'));
+        $allPaintings = Painting::select('id', 'title')->orderBy('title')->get();
+        return view('admin.myart.page', compact('paintings', 'allPaintings'));
     }
 
     public function addNewArt()
