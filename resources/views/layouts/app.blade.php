@@ -80,7 +80,7 @@
 			// Animate only once per element
 		});
 
-		{{-- // Disable right-click
+		// Disable right-click
 		document.addEventListener('contextmenu', function (e) {
 			e.preventDefault();
 		});
@@ -92,7 +92,7 @@
 				(e.ctrlKey && e.keyCode == 85)) { // Ctrl+U
 				return false;
 			}
-		};--}}
+		};
 	</script>
 
 	@stack('scripts')
