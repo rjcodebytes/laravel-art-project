@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Art Collection - Original Ajanta-Inspired Paintings by Yashwant Garud')
-@section('meta_description', 'Browse the curated collection of original Ajanta-inspired artworks by Yashwant Garud. Each painting tells a story through color, emotion, and divine inspiration.')
+@section('title', 'Ajanta Painting Collection by Yashwant Garud')
+@section('meta_description', 'Browse premium Ajanta paintings hand painted by Yashwant Garud Discover authentic Ajanta art recreated with detail devotion and heritage Explore the full collection.')
 @section('meta_keywords', 'art collection, Ajanta paintings, Indian artist, original artworks, heritage art, mural collection, Yashwant Garud paintings')
 @section('content')
 

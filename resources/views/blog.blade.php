@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Artist Blog - Yashwant Garud')
-@section('meta_description', 'Read the latest blog posts, creative insights, and stories from Yashwant Garud.')
+@section('title', 'Ajanta Caves Art Insights | Learn About Ajanta Paintings and Heritage')
+@section('meta_description', 'Read expert insights on Ajanta paintings techniques and heritage. Explore articles that bring the world of Ajanta art to life through stories, guidance and cultural knowledge.')
 @section('meta_keywords', 'artist blog, art insights, painting techniques, contemporary art, Yashwant Garud')
 
 @section('content')

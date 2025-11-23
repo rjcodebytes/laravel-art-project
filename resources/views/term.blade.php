@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Terms & Conditions - Yashwant Garud Art Website')
-@section('meta_description', 'Review the Terms and Conditions governing the use of Yashwant Garud’s art website, including user guidelines, copyrights, and usage policies.')
+@section('title', 'Terms and Conditions Yashwant Garud Official Ajanta Artwork Website')
+@section('meta_description', 'Review the terms and conditions for purchasing Ajanta artwork from the official website of Yashwant Garud. Understand usage policies and buyer guidelines.')
 @section('meta_keywords', 'terms and conditions, website policy, art copyright, user agreement, legal terms, usage policy')
 @section('content')
 <section class="bg-[#fdfaf7] text-[#1a1817] py-10 px-6 sm:px-10 lg:px-20 font-sans mt-22">

@@ -87,7 +87,6 @@
                 {{-- RIGHT: DETAILS --}}
                 <div class="p-6 md:p-8 bg-gray-50 md:rounded-lg self-start h-auto">
                     <h1 class="text-2xl font-bold text-[#2f2f2f] mb-2">{{ $painting->title }}</h1>
-                    <p class="text-gray-600 mb-3 text-justify">{{ $painting->description }}</p>
                     <div class="text-gray-500 text-sm mb-4">
                         <span><strong>Medium:</strong> {{ $painting->medium ?? 'Acrylic on Canvas' }}</span> |
                         <span><strong>Size:</strong> {{ $painting->dimensions ?? '24 x 36 in' }}</span>
@@ -96,12 +95,16 @@
                         <p class="text-2xl font-semibold text-amber-600 mb-1">₹ {{ number_format($painting->price) }}</p>
                         <p class="text-xs text-gray-500 mb-6">(Inclusive of GST)</p>
                     @endif
-                    <div class="mt-5 fade-up delay-6 flex justify-start"> <a
+                    <div class="mt-3 fade-up delay-6 flex justify-start"> <a
                             href="{{ route('enquiry.painting', $painting->slug) }}"
                             class="group inline-block bg-[#6b3e26] text-white text-center px-6 py-3 rounded-md font-medium shadow-md transition-all duration-500 relative overflow-hidden hover:bg-[#5a341f]">
                             <span class="relative z-10 flex items-center justify-center"> Enquire Now <i
                                     class="fa-solid fa-arrow-right fa-sm ml-2 transform -translate-x-0 -rotate-45 transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-0 group-active:translate-x-1 group-active:rotate-0">
-                                </i> </span> </a> </div>
+                                </i>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-justify">{{ $painting->description }}</p>
                 </div>
             </div>
 

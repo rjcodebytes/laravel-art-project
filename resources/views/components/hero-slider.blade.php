@@ -4,9 +4,8 @@
     <div data-aos="fade-up"
         class="absolute bottom-20 md:bottom-15 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-center z-20 px-4">
         <h2 class="text-[#e8ded4] text-xl sm:text-3xl md:text-4xl font-serif font-semibold mb-6 drop-shadow-lg 
-        leading-snug sm:leading-tight 
-        max-w-[260px] sm:max-w-none"> <!-- 👈 limits width on mobile for 2-line wrap -->
-        Discover the timeless beauty of Ajanta
+   ">
+        Exclusive Ajanta Artwork by Yashwant Garud
     </h2>
 
         <a href="{{ route('collection.index') }}" class="group inline-flex items-center justify-center 

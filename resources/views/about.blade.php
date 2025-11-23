@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'About Yashwant Garud - Indian Artist Inspired by Ajanta Caves')
-@section('meta_description', 'Learn about Yashwant Garud, a professional artist from Shendurni, whose works revive the spirit of Ajanta through devotion, research, and contemporary expression.')
+@section('title', 'About Yashwant Garud an Ajanta artist')
+@section('meta_description', 'Learn about Yashwant Garud an artist dedicated to recreating the beauty of Ajanta murals Explore his journey techniques and passion for original Ajanta artwork.')
 @section('meta_keywords', 'about artist, Yashwant Garud biography, Ajanta cave art, Indian painter, traditional art, heritage preservation, fine artist')
 
 @section('content')

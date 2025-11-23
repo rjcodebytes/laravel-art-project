@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Privacy Policy - Yashwant Garud Art Website')
-@section('meta_description', 'Read the Privacy Policy for Yashwant Garud’s art website. Learn how we handle your personal information, data security, and visitor privacy with transparency.')
+@section('title', 'Privacy Policy Yashwant Garud Ajanta Art Website')
+@section('meta_description', 'Learn how your data is collected, used, and protected when you visit or purchase original Ajanta paintings from the official website of Yashwant Garud.')
 @section('meta_keywords', 'privacy policy, data protection, user privacy, website terms, personal information, data security')
 
 @section('content')
